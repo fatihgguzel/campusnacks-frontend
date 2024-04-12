@@ -1,0 +1,71 @@
+{
+  "name": "campusnacks-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "react-dotenv && craco start",
+    "build": "react-dotenv && craco build",
+    "test": "craco test",
+    "eject": "craco eject",
+    "types": "node ./scripts/pull-types.js",
+    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc.cjs",
+    "lint:fix": "eslint . --fix",
+    "test:build": "craco test --watchAll=false",
+    "prepare": "husky"
+  },
+  "react-dotenv": {
+    "whitelist": [
+      "ENV_NAME",
+      "BE_BASE_URL"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "1.9.7",
+    "@testing-library/jest-dom": "5.17.0",
+    "@testing-library/react": "13.4.0",
+    "@testing-library/user-event": "13.5.0",
+    "@types/jest": "27.5.2",
+    "@types/node": "16.18.83",
+    "@types/react": "18.2.58",
+    "@types/react-dom": "18.2.19",
+    "axios": "1.6.8",
+    "i18next": "23.11.1",
+    "moment": "2.30.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-dotenv": "0.1.3",
+    "react-i18next": "14.1.0",
+    "react-redux": "8.1.3",
+    "react-router-dom": "6.22.3",
+    "react-scripts": "5.0.1",
+    "redux-persist": "6.0.0",
+    "typescript": "4.9.5",
+    "web-vitals": "2.1.4"
+  },
+  "devDependencies": {
+    "@craco/craco": "7.1.0",
+    "eslint": "8.57.0",
+    "eslint-config-prettier": "9.1.0",
+    "eslint-plugin-prettier": "5.1.3",
+    "eslint-plugin-react": "7.33.2",
+    "prettier": "3.2.5"
+  }
+}

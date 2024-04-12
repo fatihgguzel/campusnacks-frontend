@@ -1,0 +1,5 @@
+scripts
+/src/types/api/
+/build
+/public
+/.env
