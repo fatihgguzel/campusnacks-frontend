@@ -1,5 +1,13 @@
-import React, { createContext, useContext, useMemo, useState } from 'react'
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react'
 import { childrenType } from '../types'
+import { DateTimeService, RequestService } from '../services'
 
 interface IAuthContext {
   token: string
@@ -19,14 +27,27 @@ const AuthProvider: React.FC<{ children: childrenType }> = React.memo(
   ({ children }) => {
     const [token, setToken] = useState(localStorage.getItem('token') || '')
 
-    // TODO const updateToken
+    const updateToken = useCallback(
+      (token: string) => {
+        localStorage.setItem('token', token)
+        if (!localStorage.getItem('tokenCreatedAt')) {
+          localStorage.setItem('tokenCreatedAt', DateTimeService.now())
+        }
+        RequestService.setAuthHeader(token)
+      },
+      [token],
+    )
 
     const clearToken = () => {
       localStorage.removeItem('token')
       localStorage.removeItem('tokenCreatedAt')
       setToken('')
-      // TODO deleteAuthHeader()
+      RequestService.deleteAuthorizationHeader()
     }
+
+    useEffect(() => {
+      token && updateToken(token)
+    }, [token])
 
     const contextValue = useMemo(
       () => ({

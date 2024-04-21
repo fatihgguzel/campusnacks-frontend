@@ -8,9 +8,12 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist'
+import userReducer from './user/userSlice'
 
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    user: userReducer,
+  },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {

@@ -32,11 +32,12 @@ module.exports = {
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaVersion: 2021,
+    ecmaVersion: 'latest',
     sourceType: 'module',
   },
   plugins: ['@typescript-eslint', 'react', 'prettier'],
   rules: {
+    '@typescript-eslint/no-empty-interface': 'off',
     'react/react-in-jsx-scope': 'off',
     'react/display-name': 'off',
     'react/prop-types': 'off',

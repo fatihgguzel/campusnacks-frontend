@@ -1,5 +1,7 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
-// TODO set iziToast
+import iziToast from 'izitoast'
+import i18n from 'i18next'
+import { theme } from '../theme'
 import { getRefreshTokenResponse } from '../types/api/responseObjects'
 import { APP_CONFIG, API_CONFIG } from '../config'
 import { DateTimeService } from '.'
@@ -60,6 +62,17 @@ request.interceptors.response.use(
       return delayRetryRequest.then(() => request(config))
     }
 
+    iziToast.show({
+      class: 'toaster',
+      message: i18n.t(error.response.data.message),
+      timeout: 3000,
+      backgroundColor: theme.colors.error[90],
+      messageColor: theme.colors.white.DEFAULT,
+      animateInside: false,
+      progressBar: false,
+      close: false,
+    })
+
     return Promise.reject(error)
   },
 )
@@ -68,7 +81,7 @@ export const setAuthHeader = (token: string): void => {
   request.defaults.headers.common['Authorization'] = `Bearer ${token}`
 }
 
-export const deleteHeader = () => {
+export const deleteAuthorizationHeader = () => {
   delete request.defaults.headers.common['Authorization']
 }
 

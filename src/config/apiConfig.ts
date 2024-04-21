@@ -6,4 +6,6 @@ export const API_CONFIG = {
   AUTH_SIGNUP: '/auth/register',
   AUTH_PASSWORD_RESET: '/auth/password/reset',
   AUTH_PASSWORD_RESET_EMAIL: '/auth/password/email',
+
+  USER: '/user',
 }
