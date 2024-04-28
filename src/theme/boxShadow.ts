@@ -9,6 +9,7 @@ export const boxShadow = {
   5: '0px 2.94px 14.7px 7.35px rgba(79, 97, 255, 0.12)',
   6: '0 2px 6px 0 rgba(0, 0, 0, 0.25)',
   7: '0px 4px 18px 0px rgba(0, 0, 0, 0.12)',
+  HEADER: '0px 0px 24px 0px rgba(0,0,0,0.16);',
 }
 
 export type IBoxShadow = valueOf<typeof boxShadow, string>

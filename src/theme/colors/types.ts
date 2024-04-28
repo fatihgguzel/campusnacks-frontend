@@ -1,7 +1,9 @@
 import { valueOf } from '../../types'
 
 export enum COLOR {
-  primary_100 = '#ff6600',
+  primary_100 = '#ff751a',
+  primary_10 = '#ffe0cc',
+
   secondary_100 = '#FFA500',
 
   textColor_100 = '#242424',
@@ -25,6 +27,12 @@ export enum COLOR {
   black_30 = '#b3b3b3',
   black_20 = '#cccccc',
   black_10 = '#e5e5e5',
+
+  dark_100 = '#e65c00',
+
+  dark2_100 = '#d7d7db',
+
+  outline_100 = '#E5E5E8',
 }
 
 export type ColorSet<T> = valueOf<T, COLOR>

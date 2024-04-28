@@ -6,6 +6,9 @@ import { error } from './error'
 import { success } from './success'
 import { white } from './white'
 import { black } from './black'
+import { dark } from './dark'
+import { elements } from './elements'
+import { deactive } from './deactive'
 
 export interface IColors {
   primary: ColorSet<typeof primary>
@@ -15,6 +18,9 @@ export interface IColors {
   success: ColorSet<typeof success>
   white: ColorSet<typeof white>
   black: ColorSet<typeof black>
+  dark: ColorSet<typeof dark>
+  elements: ColorSet<typeof elements>
+  deactive: ColorSet<typeof deactive>
 }
 
 export const colors: IColors = {
@@ -25,6 +31,9 @@ export const colors: IColors = {
   success,
   white,
   black,
+  dark,
+  elements,
+  deactive,
 }
 
 export { COLOR } from './types'

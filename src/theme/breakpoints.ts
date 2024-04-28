@@ -2,6 +2,7 @@ import { valueOf } from '../types'
 
 export const breakpoints = {
   small: 360,
+  medium: 540,
   tablet: 768,
   laptop: 1024,
   desktop: 1280,

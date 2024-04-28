@@ -8,10 +8,10 @@
     "test": "craco test",
     "eject": "craco eject",
     "types": "node ./scripts/pull-types.js",
+    "icons": "node ./scripts/generate-icons.js",
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc.cjs",
     "lint:fix": "eslint --fix .",
-    "test:build": "craco test --watchAll=false",
-    "prepare": "husky"
+    "test:build": "craco test --watchAll=false"
   },
   "react-dotenv": {
     "whitelist": [
@@ -38,7 +38,8 @@
     ]
   },
   "dependencies": {
-    "@emotion/react": "11.11.4",
+    "@emotion/babel-preset-css-prop": "11.11.0",
+    "@emotion/react": "11.11.1",
     "@reduxjs/toolkit": "1.9.7",
     "@testing-library/jest-dom": "5.17.0",
     "@testing-library/react": "13.4.0",
@@ -48,6 +49,7 @@
     "@types/react": "18.2.58",
     "@types/react-dom": "18.2.19",
     "axios": "1.6.8",
+    "case-anything": "2.1.13",
     "i18next": "23.11.1",
     "izitoast": "1.4.0",
     "moment": "2.30.1",
@@ -59,11 +61,14 @@
     "react-router-dom": "6.22.3",
     "react-scripts": "5.0.1",
     "redux-persist": "6.0.0",
+    "svgson": "5.3.1",
     "typescript": "4.9.5",
+    "uuid": "9.0.1",
     "web-vitals": "2.1.4"
   },
   "devDependencies": {
     "@craco/craco": "7.1.0",
+    "@types/uuid": "9.0.8",
     "eslint": "8.57.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-prettier": "5.1.3",

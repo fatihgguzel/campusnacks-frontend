@@ -11,6 +11,7 @@ import { gap, IGap } from './gap'
 import { size, ISize } from './size'
 import { spacing, ISpacing } from './spacing'
 import { zIndex, IZIndex } from './z-index'
+import { dimensions, IDimensions } from './dimensions'
 
 interface ITheme {
   borderRadius: IBorderRadius
@@ -24,6 +25,7 @@ interface ITheme {
   size: ISize
   spacing: ISpacing
   zIndex: IZIndex
+  dimensions: IDimensions
 }
 
 export const theme: ITheme = {
@@ -38,6 +40,7 @@ export const theme: ITheme = {
   size,
   spacing,
   zIndex,
+  dimensions,
 }
 
 export const useTheme = (): ITheme => useEmotionTheme() as ITheme
@@ -55,6 +58,7 @@ export {
   size,
   spacing,
   zIndex,
+  dimensions,
 }
 
 export type { ITheme }

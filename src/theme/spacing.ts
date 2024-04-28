@@ -1,10 +1,11 @@
 import { valueOf } from '../types'
 
 export const spacing = {
-  '4xsmall': '2px',
-  '3xsmall': '4px',
-  '2xsmall': '6px',
-  'xsmall': '8px',
+  '5xsmall': '2px',
+  '4xsmall': '4px',
+  '3xsmall': '6px',
+  '2xsmall': '8px',
+  'xsmall': '10px',
   'small': '12px',
   'medium': '16px',
   'large': '20px',
@@ -15,6 +16,7 @@ export const spacing = {
   '5xlarge': '48px',
   '6xlarge': '64px',
   '7xlarge': '72px',
+  '8xlarge': '80px',
 }
 
 export type ISpacing = valueOf<typeof spacing, string>

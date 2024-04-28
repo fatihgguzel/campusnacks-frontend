@@ -1,20 +1,22 @@
 import React from 'react'
-import { Provider as ReduxProvider } from 'react-redux'
-import { PersistGate } from 'redux-persist/integration/react'
-import { persistor, store } from './store'
-import AuthProvider from '../src/provider/authProvider'
+import AuthProvider from './provider/authProvider'
 import Routes from './routes'
+import { ThemeProvider } from '@emotion/react'
+import { Provider as ReduxProvider } from 'react-redux'
+import { store } from './store'
+import { theme } from './theme'
 import './index.css'
+import './iziToast.css'
 
 export const App: React.FC = () => {
   return (
-    <ReduxProvider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
+    <ThemeProvider theme={theme}>
+      <ReduxProvider store={store}>
         <AuthProvider>
           <Routes />
         </AuthProvider>
-      </PersistGate>
-    </ReduxProvider>
+      </ReduxProvider>
+    </ThemeProvider>
   )
 }
 
