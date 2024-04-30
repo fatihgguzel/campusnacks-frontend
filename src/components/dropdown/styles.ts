@@ -182,7 +182,7 @@ export const menuItemStyles =
     .menu-item-wrapper {
       align-items: center;
       display: flex;
-      height: 18px;
+      height: 30px;
       padding: ${spacing['2xsmall']};
       color: ${theme === DROPDOWN_THEME.DARK
         ? colors.white.DEFAULT

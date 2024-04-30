@@ -31,4 +31,10 @@ export const values = {
     medium: 40,
     big: 46,
   },
+  headerDropdownWidth: {
+    DEFAULT: 300,
+    medium: 250,
+    small: 200,
+    xsmall: 150,
+  },
 }

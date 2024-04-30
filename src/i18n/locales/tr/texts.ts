@@ -1,7 +1,7 @@
 export const texts = {
   '': '',
-  'login': 'Giriş',
-  'logout': 'Çıkış',
-  'signup': 'Üye ol',
+  'login': 'Giriş Yap',
+  'logout': 'Çıkış Yap',
+  'signup': 'Üye Ol',
   'IYTE': 'İzmir Yüksek Teknoloji Enstitüsü',
 }

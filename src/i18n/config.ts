@@ -7,8 +7,8 @@ import { capitalizeFirstLetter } from '../helpers/stringHelpers'
 const lang = localStorage.getItem('currentLanguage')
 
 i18n.use(initReactI18next).init({
-  fallbackLng: 'en',
-  lng: lang || 'en',
+  fallbackLng: 'tr',
+  lng: lang || 'tr',
   resources: {
     en: {
       translations: en,

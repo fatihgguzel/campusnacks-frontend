@@ -177,15 +177,6 @@ export const Dropdown: React.FC<IDropdown> = React.memo(
               theme={theme}
             />
           )}
-          {windowWidth < breakpoints.tablet && (
-            <DropdownSelect
-              onChange={onChangeHandler}
-              value={selectedItem?.value}
-              placeholder={placeholder}
-              items={items}
-              selected={selected}
-            />
-          )}
         </div>
       </>
     )

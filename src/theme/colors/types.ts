@@ -1,6 +1,7 @@
 import { valueOf } from '../../types'
 
 export enum COLOR {
+  primary_110 = '#e65c00',
   primary_100 = '#ff751a',
   primary_10 = '#ffe0cc',
 
