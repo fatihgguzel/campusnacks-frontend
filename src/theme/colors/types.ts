@@ -8,7 +8,7 @@ export enum COLOR {
   secondary_100 = '#FFA500',
 
   textColor_100 = '#242424',
-  textColor_2 = '#FFFFFF',
+  textColor_2 = '#9AA0AB',
 
   red_100 = '#ff4444',
   red_90 = '#FF5757',
@@ -29,11 +29,16 @@ export enum COLOR {
   black_20 = '#cccccc',
   black_10 = '#e5e5e5',
 
-  dark_100 = '#e65c00',
+  dark_100 = '#662900',
+  dark_60 = '#7d7d84',
 
   dark2_100 = '#d7d7db',
 
   outline_100 = '#E5E5E8',
+
+  overlay_modal = '#212121',
+  overlay_card = '#993d00',
+  overlay_card2 = '#662900',
 }
 
 export type ColorSet<T> = valueOf<T, COLOR>

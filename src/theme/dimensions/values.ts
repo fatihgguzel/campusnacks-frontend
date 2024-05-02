@@ -37,4 +37,10 @@ export const values = {
     small: 200,
     xsmall: 150,
   },
+  formWidth: {
+    DEFAULT: 300,
+    large: 350,
+    medium: 250,
+    small: 200,
+  },
 }

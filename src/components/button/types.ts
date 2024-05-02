@@ -1,4 +1,5 @@
 import { icons } from '../../lib'
+import { COLOR } from '../../theme'
 import { dataAttrType } from '../../types'
 
 export enum BUTTON_SIZE {
@@ -48,6 +49,7 @@ export interface IButton {
   onClick?: (event?: React.MouseEvent<HTMLButtonElement>) => void
   className?: string
   dataAttr?: dataAttrType
+  iColor?: COLOR
 }
 
 export type IColorStylesMapping = {

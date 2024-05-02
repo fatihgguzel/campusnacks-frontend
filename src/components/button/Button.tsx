@@ -32,6 +32,7 @@ export const Button: React.FC<IButton> = React.memo(
     onClick,
     className,
     dataAttr,
+    iColor,
   }) => {
     const iconColor = useIconColor({ type, theme, disabled })
 
@@ -62,7 +63,13 @@ export const Button: React.FC<IButton> = React.memo(
           color={iconColor}
         />
         <div css={innerStyles({ isLoading })}>
-          {icon && <Icon icon={icon} color={iconColor} size={iconSize} />}
+          {icon && (
+            <Icon
+              icon={icon}
+              color={iColor ? iColor : iconColor}
+              size={iconSize}
+            />
+          )}
           {text && <span className="button-text">{text}</span>}
         </div>
       </button>

@@ -9,6 +9,7 @@ import { black } from './black'
 import { dark } from './dark'
 import { elements } from './elements'
 import { deactive } from './deactive'
+import { overlay } from './overlay'
 
 export interface IColors {
   primary: ColorSet<typeof primary>
@@ -21,6 +22,7 @@ export interface IColors {
   dark: ColorSet<typeof dark>
   elements: ColorSet<typeof elements>
   deactive: ColorSet<typeof deactive>
+  overlay: ColorSet<typeof overlay>
 }
 
 export const colors: IColors = {
@@ -34,6 +36,7 @@ export const colors: IColors = {
   dark,
   elements,
   deactive,
+  overlay,
 }
 
 export { COLOR } from './types'
