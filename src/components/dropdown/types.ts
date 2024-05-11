@@ -6,6 +6,8 @@ export type IDropdownValue = string | number
 export interface IDropdownItem {
   name: string
   value: IDropdownValue
+  onItemClick?: () => void
+  icon?: icons
   subMenu?: IDropdownItem[]
 }
 
@@ -40,10 +42,12 @@ type NameFormatter = (val: string) => string
 
 export interface IDropdown {
   placeholder?: string
+  disable?: boolean
   selected?: IDropdownValue
   items: IDropdownItem[]
   width?: DROPDOWN_WIDTH
   onChange?: (value?: IDropdownItem) => void
+  onValueChange?: (value: string) => void
   onInputFocus?: () => void
   onInputBlur?: () => void
   type?: DROPDOWN_TYPE
@@ -55,17 +59,19 @@ export interface IDropdown {
   className?: string
   dataAttr?: dataAttrType
   menuPosition?: DROPDOWN_MENU_POSITION
+  downIcon?: icons
 }
 
 export type IDropdownMenu = Pick<
   IDropdown,
   'placeholder' | 'items' | 'selected' | 'type'
 > & {
-  onClick: (value?: IDropdownValue) => void
+  onClick?: (value?: IDropdownValue) => void
   menuLevel?: number
   theme?: DROPDOWN_THEME
   type?: DROPDOWN_TYPE
   menuPosition?: DROPDOWN_MENU_POSITION
+  className?: string
 }
 
 export type IDropdownMenuItem = Pick<
@@ -80,6 +86,7 @@ export type IDropdownMenuItem = Pick<
   onHover: (value?: IDropdownValue) => void
   theme?: DROPDOWN_THEME
   type?: DROPDOWN_TYPE
+  icon?: icons
 }
 
 export type IDropdownSelect = {

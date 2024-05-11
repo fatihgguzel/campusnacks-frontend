@@ -8,6 +8,8 @@ export const useLanguage = (): {
   t: (key: TKey, options?: any) => any
   changeLanguage: typeof i18n.changeLanguage
   Trans: typeof Trans
+  languages: readonly string[]
+  fallbackLanguage: string
 } => {
   const { t: translate, i18n } = useTranslation()
 
@@ -21,5 +23,9 @@ export const useLanguage = (): {
     return translate(key, options)
   }
 
-  return { dir, lang, t, changeLanguage, Trans }
+  const languages = i18n.languages
+
+  const fallbackLanguage = 'en'
+
+  return { dir, lang, t, changeLanguage, Trans, languages, fallbackLanguage }
 }

@@ -1,4 +1,4 @@
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import { RouterProvider, createBrowserRouter, Navigate } from 'react-router-dom'
 import { UnprotectedPageLayout, ProtectedPageLayout } from '../layouts'
 import { MainLayout } from '../layouts/main-layout'
 
@@ -11,6 +11,10 @@ const Routes = () => {
         {
           path: '/',
           element: <MainLayout />,
+        },
+        {
+          path: '/*',
+          element: <Navigate to="/" />,
         },
       ],
     },

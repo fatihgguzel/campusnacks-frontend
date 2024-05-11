@@ -153,6 +153,13 @@ export const colorClassesMapping = ({
 					border-color: ${colors.primary[110]};
 				}
 			`,
+      [BUTTON_THEME.BLACK]: `
+        color: ${colors.text.DEFAULT};
+        border-color: ${colors.text.DEFAULT};
+        &:hover {
+          background: ${colors.text[2]};
+        }
+      `,
       [BUTTON_THEME.SECONDARY]: `
 				background: ${colors.secondary.DEFAULT}	;
 				&:hover {
@@ -227,6 +234,13 @@ export const colorClassesMapping = ({
 					background: ${colors.text[2]};
 				}
 			`,
+      [BUTTON_THEME.BLACK]: `
+        color: ${colors.text.DEFAULT};
+        border-color: ${colors.text.DEFAULT};
+        &:hover {
+          background: ${colors.text[2]};
+        }
+      `,
       [BUTTON_THEME.DARK]: `
 				color: ${colors.dark.DEFAULT};
 				border-color: ${colors.dark.DEFAULT};
@@ -247,6 +261,10 @@ export const colorClassesMapping = ({
     defaults: `
 			border-color: transparent;
 			background: transparent;
+      transition: background 0.3s cubic-bezier(0.22, 0.1, 0.1, 1);
+      &:hover {
+        background: ${colors.primary[10]};
+      }
 			&:disabled {
 				background: transparent;
 				color: ${colors.deactive.DEFAULT};
@@ -256,7 +274,7 @@ export const colorClassesMapping = ({
     theme: {
       [BUTTON_THEME.PRIMARY]: `color: ${colors.primary.DEFAULT};`,
       [BUTTON_THEME.SECONDARY]: `color: ${colors.secondary.DEFAULT};`,
-
+      [BUTTON_THEME.BLACK]: `color: ${colors.black.DEFAULT}`,
       [BUTTON_THEME.WHITE]: `color: ${colors.white.DEFAULT};`,
       [BUTTON_THEME.GRAY]: `color: ${colors.text.DEFAULT};`,
       [BUTTON_THEME.DARK]: `color: ${colors.dark.DEFAULT};`,

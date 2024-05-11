@@ -10,6 +10,7 @@ export const DropdownMenuItem: React.FC<IDropdownMenuItem> = React.memo(
     value,
     subMenu,
     name,
+    icon,
     onClick,
     selected,
     menuLevel = 0,
@@ -56,14 +57,16 @@ export const DropdownMenuItem: React.FC<IDropdownMenuItem> = React.memo(
             isHover: isHovered,
             isActive: isActiveGroup,
           })}
+          className="menu-item"
           key={value}
           onMouseEnter={() => onHover(value)}
           onMouseLeave={() => onHover(undefined)}
         >
           <div
             className="menu-item-wrapper"
-            onClick={() => !subMenu && onClick(value)}
+            onClick={() => !subMenu && onClick?.(value)}
           >
+            {icon && <Icon size={18} icon={icon} />}
             <span className="menu-item-name">{name}</span>
             <span className="menu-item-icon">{genIcons()}</span>
           </div>

@@ -3,6 +3,7 @@ import { ValidationRules } from '../../hooks'
 import { icons } from '../../lib'
 import { COLOR } from '../../theme'
 import { dataAttrType } from '../../types'
+import { IDropdownItem } from '../dropdown'
 
 export enum INPUT_SIZE {
   BIG = 'big',
@@ -30,9 +31,15 @@ export enum INPUT_VARIANT {
   DASHED = 'dashed',
 }
 
+export type INPUT_TYPE =
+  | HTMLInputTypeAttribute
+  | 'phone_number'
+  | 'dropdown'
+  | 'textarea'
+
 export interface IInput {
   label?: string
-  type?: HTMLInputTypeAttribute
+  type?: INPUT_TYPE
   value?: string
   numberValue?: number
   numberMin?: number
@@ -64,4 +71,6 @@ export interface IInput {
   labelTheme?: COLOR
   disabledCheckOnBlur?: boolean
   constantValidation?: boolean
+  items?: IDropdownItem[]
+  optionalRender?: boolean
 }

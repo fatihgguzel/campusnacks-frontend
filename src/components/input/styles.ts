@@ -155,6 +155,14 @@ export const inputAreaStyles =
     border-width: 1px;
     border-style: solid;
 
+    .PhoneInputInput {
+      border: none !important;
+    }
+
+    .PhoneInputInput:focus {
+      outline: none !important;
+    }
+
     ${getBorderCss({ isError, colors, focused, icon, inputTheme, variant })}
 
     @media (min-width: ${theme.breakpoints.tablet}px) {

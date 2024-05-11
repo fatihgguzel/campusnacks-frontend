@@ -21,12 +21,14 @@ export const Dropdown: React.FC<IDropdown> = React.memo(
     selected,
     items,
     placeholder = 'Select',
+    disable = false,
     width,
     icon,
     type = DROPDOWN_TYPE.DEFAULT,
     theme = DROPDOWN_THEME.DEFAULT,
     size = DROPDOWN_SIZE.DEFAULT,
     onChange,
+    onValueChange,
     onInputBlur,
     onInputFocus,
     flexValue,
@@ -34,6 +36,7 @@ export const Dropdown: React.FC<IDropdown> = React.memo(
     className,
     dataAttr,
     menuPosition = DROPDOWN_MENU_POSITION.DEFAULT,
+    downIcon,
   }) => {
     const { width: windowWidth } = useWindowSize()
     const menuRef = useRef<HTMLDivElement>(null)
@@ -46,6 +49,12 @@ export const Dropdown: React.FC<IDropdown> = React.memo(
     const [selectedItem, setSelectedItem] = useState<IDropdownItem | undefined>(
       items?.find(({ value }) => value === selected),
     )
+
+    useEffect(() => {
+      if (selectedItem) {
+        onValueChange?.(selectedItem.value.toString())
+      }
+    })
 
     useEffect(() => {
       selected &&
@@ -103,7 +112,9 @@ export const Dropdown: React.FC<IDropdown> = React.memo(
     )
 
     const onMenuClickHandler = useCallback(() => {
-      setIsMenuOpen(!isMenuOpen)
+      if (!disable) {
+        setIsMenuOpen(!isMenuOpen)
+      }
     }, [isMenuOpen])
 
     const onInputClickHandler = useCallback(
@@ -134,11 +145,22 @@ export const Dropdown: React.FC<IDropdown> = React.memo(
           {...dataAttr}
         >
           <div
-            css={dropdownStyles({ type, isMenuOpen, theme, size })}
+            css={dropdownStyles({ type, isMenuOpen, theme, size, disable })}
             onClick={onMenuClickHandler}
           >
             <div className="dropdown-label">
-              {icon && <div className="dropdown-icon"></div>}
+              {icon && (
+                <div className="dropdown-icon">
+                  <Icon
+                    icon={icon}
+                    color={
+                      theme === DROPDOWN_THEME.DARK
+                        ? colors.white.DEFAULT
+                        : colors.primary.DEFAULT
+                    }
+                  />
+                </div>
+              )}
               <div className="dropdown-text">
                 {flexValue ? (
                   <input
@@ -156,7 +178,7 @@ export const Dropdown: React.FC<IDropdown> = React.memo(
             {type === DROPDOWN_TYPE.DEFAULT && (
               <Icon
                 className="down-icon"
-                icon={icons.campus}
+                icon={downIcon && !disable ? downIcon : icons.campus}
                 size={20}
                 color={
                   theme === DROPDOWN_THEME.DARK

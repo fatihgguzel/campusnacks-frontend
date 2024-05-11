@@ -14,7 +14,7 @@ const localToken = localStorage.getItem('token')
 export const extRequest = axios.create()
 
 export const request = axios.create({
-  baseURL: env?.BASE_URL,
+  baseURL: env?.BE_BASE_URL,
   headers: {
     common: {
       ...(localToken ? { Authorization: `Bearer ${localToken}` } : {}),
@@ -41,7 +41,6 @@ request.interceptors.response.use(
     if ([401].includes(error.response.status)) {
       localStorage.removeItem('token')
       localStorage.removeItem('tokenCreatedAt')
-      window.location.href = '/login'
 
       return Promise.reject(false)
     }
@@ -64,7 +63,10 @@ request.interceptors.response.use(
 
     iziToast.show({
       class: 'toaster',
-      message: i18n.t(error.response.data.message),
+      message:
+        i18n.t(error.response.data.message).length > 0
+          ? i18n.t(error.response.data.message)
+          : i18n.t('something_wrong'),
       timeout: 3000,
       backgroundColor: theme.colors.error[90],
       messageColor: theme.colors.white.DEFAULT,
@@ -104,10 +106,11 @@ export const callApi = async (
 
       localStorage.setItem('token', res.data.data.authToken)
       localStorage.setItem('tokenCreatedAt', DateTimeService.now())
+
+      return request(config)
     } catch {
       localStorage.removeItem('token')
       localStorage.removeItem('tokenCreatedAt')
-      window.location.replace('/login')
     }
   }
 

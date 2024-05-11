@@ -18,6 +18,10 @@ import {
   labelStyles,
   wrapperStyles,
 } from './styles'
+import PhoneInputWithCountrySelect from 'react-phone-number-input'
+import 'react-phone-number-input/style.css'
+import { Dropdown, DROPDOWN_THEME, DROPDOWN_WIDTH } from '../dropdown'
+import { TextArea } from '../textarea'
 
 export const Input: React.FC<IInput> = React.memo(
   ({
@@ -54,6 +58,8 @@ export const Input: React.FC<IInput> = React.memo(
     labelTheme,
     disabledCheckOnBlur,
     constantValidation,
+    items,
+    optionalRender = false,
   }) => {
     const [isCopied, setIsCopied] = useState(false)
     const [focused, setFocused] = useState(false)
@@ -68,10 +74,9 @@ export const Input: React.FC<IInput> = React.memo(
           : {},
       )
 
-    const errorOverride = useMemo(
-      () => errorText || validationError,
-      [validationError, errorText],
-    )
+    const errorOverride = useMemo(() => {
+      return errorText || validationError
+    }, [validationError, errorText])
 
     useEffect(() => {
       if (numberMax < numberValue) {
@@ -127,11 +132,72 @@ export const Input: React.FC<IInput> = React.memo(
       onChange && onChange('')
     }
 
+    const renderOptional = () => {
+      switch (type) {
+        case 'phone_number':
+          return (
+            <PhoneInputWithCountrySelect
+              value={value}
+              css={inputAreaStyles({
+                icon,
+                theme,
+                variant,
+                size,
+                focused,
+                squeezed,
+                disabled,
+                isError: !!errorOverride,
+              })}
+              onChange={
+                onChange
+                  ? onChange
+                  : (value: string) => {
+                      value
+                    }
+              }
+              onFocus={onInputFocus}
+              onBlur={onInputBlur}
+              defaultCountry={'TR'}
+            />
+          )
+        case 'dropdown':
+          return (
+            <Dropdown
+              items={items ? items : []}
+              selected={value}
+              width={DROPDOWN_WIDTH.FULL}
+              onValueChange={onChange}
+              downIcon={icon}
+              placeholder={placeholder}
+              disable={disabled}
+              onInputBlur={onInputBlur}
+            />
+          )
+        case 'textarea':
+          return (
+            <TextArea
+              onChange={
+                onChange
+                  ? onChange
+                  : (value: string) => {
+                      value
+                    }
+              }
+              value={value}
+              onBlur={onInputBlur}
+              isValid={!(errorText || validationError)}
+              onFocus={onInputFocus}
+            />
+          )
+      }
+    }
+
     const onKeyDownHandler = useCallback(
       (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter' && onEnter) {
-          checkValidation()
-          onEnter()
+          if (isValid) {
+            onEnter()
+          }
         }
       },
       [onEnter, value],
@@ -174,77 +240,83 @@ export const Input: React.FC<IInput> = React.memo(
     return (
       <div {...dataAttr} css={wrapperStyles({ width })} className={className}>
         {label && <div css={labelStyles({ size, labelTheme })}>{label}</div>}
-        <div
-          css={inputAreaStyles({
-            icon,
-            theme,
-            variant,
-            size,
-            focused,
-            squeezed,
-            disabled,
-            isError: !!errorOverride,
-          })}
-        >
-          {icon && (
-            <Icon
-              css={iconStyles}
-              icon={icon}
-              color={iconColor}
-              size={iconSize ?? 24}
-            />
-          )}
-          <input
-            css={inputStyles({ theme })}
-            onFocus={onInputFocus}
-            onBlur={onInputBlur}
-            placeholder={placeholder}
-            value={type === 'number' ? numberValue : value}
-            onChange={onChangeHandler}
-            onKeyDown={onKeyDownHandler}
-            type={type}
-            autoComplete="on"
-            name={name}
-            disabled={disabled}
-          />
-          {type === 'number' && !disabled && (
-            <div className="number-buttons">
-              <Icon
-                icon={icons.chevron_up}
-                color={colors.white.DEFAULT}
-                size={16}
-                onClick={handleNumberIncrease}
+        {optionalRender ? (
+          renderOptional()
+        ) : (
+          <>
+            <div
+              css={inputAreaStyles({
+                icon,
+                theme,
+                variant,
+                size,
+                focused,
+                squeezed,
+                disabled,
+                isError: !!errorOverride,
+              })}
+            >
+              {icon && (
+                <Icon
+                  css={iconStyles}
+                  icon={icon}
+                  color={iconColor}
+                  size={iconSize ?? 24}
+                />
+              )}
+              <input
+                css={inputStyles({ theme })}
+                onFocus={onInputFocus}
+                onBlur={onInputBlur}
+                placeholder={placeholder}
+                value={type === 'number' ? numberValue : value}
+                onChange={onChangeHandler}
+                onKeyDown={onKeyDownHandler}
+                type={type}
+                autoComplete="on"
+                name={name}
+                disabled={disabled}
               />
-              <Icon
-                icon={icons.chevron_down}
-                color={colors.white.DEFAULT}
-                size={16}
-                onClick={handleNumberDecrease}
-              />
+              {type === 'number' && !disabled && (
+                <div className="number-buttons">
+                  <Icon
+                    icon={icons.chevron_up}
+                    color={colors.white.DEFAULT}
+                    size={16}
+                    onClick={handleNumberIncrease}
+                  />
+                  <Icon
+                    icon={icons.chevron_down}
+                    color={colors.white.DEFAULT}
+                    size={16}
+                    onClick={handleNumberDecrease}
+                  />
+                </div>
+              )}
+              {clearButton && value && !disabled && (
+                <Button
+                  theme={buttonTheme}
+                  type={BUTTON_TYPE.GHOST}
+                  isLink
+                  icon={icons.close}
+                  onClick={onClearClick}
+                  preventFocus
+                />
+              )}
+              {copyButton && !isCopied && (
+                <Button
+                  theme={buttonTheme}
+                  type={BUTTON_TYPE.GHOST}
+                  isLink
+                  icon={icons.copy}
+                  onClick={onCopyClick}
+                  preventFocus
+                />
+              )}
+              {isCopied && <div className="copy-text">Copied!</div>}
             </div>
-          )}
-          {clearButton && value && !disabled && (
-            <Button
-              theme={buttonTheme}
-              type={BUTTON_TYPE.GHOST}
-              isLink
-              icon={icons.close}
-              onClick={onClearClick}
-              preventFocus
-            />
-          )}
-          {copyButton && !isCopied && (
-            <Button
-              theme={buttonTheme}
-              type={BUTTON_TYPE.GHOST}
-              isLink
-              icon={icons.copy}
-              onClick={onCopyClick}
-              preventFocus
-            />
-          )}
-          {isCopied && <div className="copy-text">Copied!</div>}
-        </div>
+          </>
+        )}
         {errorOverride && (
           <div
             css={errorStyles({ size, errorAlignRight, solidError })}

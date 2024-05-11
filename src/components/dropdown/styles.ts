@@ -25,7 +25,10 @@ export const wrapperStyles =
     cursor: pointer;
   `
 
-type IDropdownStyles = Pick<IDropdown, 'type' | 'theme' | 'size'> & {
+type IDropdownStyles = Pick<
+  IDropdown,
+  'type' | 'theme' | 'size' | 'disable'
+> & {
   isMenuOpen?: boolean
 }
 
@@ -37,7 +40,7 @@ type IMenuItemStyles = {
 }
 
 export const dropdownStyles =
-  ({ type, isMenuOpen, theme, size }: IDropdownStyles) =>
+  ({ type, isMenuOpen, theme, size, disable }: IDropdownStyles) =>
   ({
     colors,
     boxShadow,
@@ -74,7 +77,7 @@ export const dropdownStyles =
     align-items: center;
     padding: 0 ${gap.small}px 0
       ${type === DROPDOWN_TYPE.DEFAULT ? `${gap.small}px` : 0};
-    cursor: pointer;
+    cursor: ${disable ? 'not-allowed' : 'pointer'};
 
     .down-icon {
       flex-shrink: 0;
@@ -167,6 +170,7 @@ export const menuItemStyles =
     position: relative;
     cursor: ${isDisabled ? 'default' : 'pointer'};
     color: ${isDisabled ? colors.deactive.DEFAULT : colors.text.DEFAULT};
+    transition: background 0.2s ease;
 
     ${isHover &&
     (theme === DROPDOWN_THEME.DARK

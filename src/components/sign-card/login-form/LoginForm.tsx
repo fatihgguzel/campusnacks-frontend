@@ -21,12 +21,12 @@ export const LoginForm: React.FC<ILoginForm> = React.memo(
     const [password, setPassword] = useState('')
     const [isPasswordValid, setIsPasswordValid] = useState(false)
 
-    const onSubmitHandler = useCallback(() => {
+    const onSubmitHandler = useCallback(async () => {
       login({ email, password })
     }, [email, password])
 
     const onForgotClickHandler = useCallback(() => {
-      changeState(SIGN_CARD_TYPE.RESET_PASSWORD)
+      //changeState(SIGN_CARD_TYPE.RESET_PASSWORD)
     }, [])
 
     const onEmailChange = (value: string) => {

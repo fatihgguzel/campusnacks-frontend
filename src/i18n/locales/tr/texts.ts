@@ -3,12 +3,19 @@ export const texts = {
   'login': 'Giriş Yap',
   'logout': 'Çıkış Yap',
   'signup': 'Üye Ol',
+  'create_account': 'Hesap Oluştur',
+
   'IYTE': 'İzmir Yüksek Teknoloji Enstitüsü',
   'sign_card_welcome_header': 'Hoş geldin!',
   'sign_card_sign_info': 'Devam etmek için kayıt ol ya da giriş yap',
   'email_address': 'E-posta Adresi',
   'password': 'Şifre',
   'forgot_password': 'Şifrenizi mi unuttunuz?',
+  'fullName': 'Ad Soyad',
+  'city': 'Şehir',
+  'district': 'İlçe',
+  'address': 'Adres',
+  'phone_number': 'Telefon Numarası',
 
   'validation.min_char':
     '{{name, capitalFirstLetter}}, {{value}} karakterden daha kısa olamaz.',
@@ -18,4 +25,8 @@ export const texts = {
   'validation.error.email': 'Geçersiz E-posta adresi.',
   'validation.error.url': 'Geçersiz URL.',
   'validation_user_exists': 'Bu kullanıcı zaten var.',
+
+  'already_member': 'Zaten üye misiniz ?',
+
+  'something_wrong': 'Bir şeyler yanlış gözüküyor, üzerinde çalışıyoruz.',
 }

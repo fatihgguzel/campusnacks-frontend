@@ -22,6 +22,7 @@ export enum BUTTON_THEME {
   GRAY = 'gray',
   DARK = 'dark',
   ELEMENTS = 'elements',
+  BLACK = 'black',
 }
 
 export enum BUTTON_TYPE {

@@ -11,6 +11,7 @@ import { DropdownMenuItem } from '../dropdown-menu-item/DropdownMenuItem'
 export const DropdownMenu = React.forwardRef<HTMLDivElement, IDropdownMenu>(
   (
     {
+      className,
       onClick,
       items,
       menuLevel = 0,
@@ -25,17 +26,19 @@ export const DropdownMenu = React.forwardRef<HTMLDivElement, IDropdownMenu>(
 
     return (
       <div
+        className={className}
         css={menuStyles({ isSubMenu: !!menuLevel, type, menuPosition })}
         ref={ref}
       >
         <div css={menuInnerStyles(theme)}>
-          {items?.map(({ name, value, subMenu }) => (
+          {items?.map(({ name, value, subMenu, icon, onItemClick }) => (
             <DropdownMenuItem
               key={value}
               name={name}
+              icon={icon}
               value={value}
               subMenu={subMenu}
-              onClick={onClick}
+              onClick={onItemClick ? onItemClick : onClick}
               isHovered={hovered === value}
               isActive={selected === value}
               selected={selected}

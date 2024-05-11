@@ -7,6 +7,7 @@ import { Button, BUTTON_SIZE, BUTTON_TYPE, BUTTON_THEME } from '../button'
 import { SIGN_CARD_TYPE } from './types'
 import { COLOR } from '../../theme'
 import { LoginForm } from './login-form'
+import { SignUpForm } from './signup-form'
 
 export const SignCard: React.FC<ISignCard> = React.memo(
   ({ className, dataAttr, onCloseclick, isOpen }) => {
@@ -24,6 +25,8 @@ export const SignCard: React.FC<ISignCard> = React.memo(
       switch (currentState) {
         case SIGN_CARD_TYPE.LOGIN:
           return <LoginForm changeState={setCurrentState} />
+        case SIGN_CARD_TYPE.SIGNUP:
+          return <SignUpForm changeState={setCurrentState} />
         case SIGN_CARD_TYPE.WELCOME:
           return <WelcomeForm changeState={setCurrentState} />
         default:
