@@ -18,4 +18,6 @@ export const texts = {
   'validation.error.email': 'Geçersiz E-posta adresi.',
   'validation.error.url': 'Geçersiz URL.',
   'validation_user_exists': 'Bu kullanıcı zaten var.',
+  'sidebar.action1': 'Eylem 1',
+  'sidebar.action2': 'Eylem 2',
 }

@@ -43,4 +43,10 @@ export const values = {
     medium: 250,
     small: 200,
   },
+  sidebarWidth: {
+    DEFAULT: 250,
+    medium: 200,
+    small: 150,
+    xsmall: 100,
+  },
 }

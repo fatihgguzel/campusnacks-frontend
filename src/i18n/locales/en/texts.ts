@@ -18,4 +18,6 @@ export const texts = {
   'validation.error.email': 'Invalid e-mail address.',
   'validation.error.url': 'Invalid URL.',
   'validation_user_exists': 'This user already exists.',
+  'sidebar.action1': 'Action 1',
+  'sidebar.action2': 'Action 2',
 }
