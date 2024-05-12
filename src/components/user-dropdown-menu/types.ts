@@ -5,6 +5,7 @@ export interface IUserDropdownMenu {
   items: IDropdownItem[]
   className?: string
   dataAttr?: dataAttrType
+  name?: string
 }
 
 export enum DROPDOWN_MENU_WIDTH {

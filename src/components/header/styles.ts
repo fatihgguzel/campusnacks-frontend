@@ -8,7 +8,6 @@ export const headerStyles = (theme: ITheme) => css`
   position: sticky;
   align-items: center;
   background: ${theme.colors.white.DEFAULT};
-  width: 100%;
   box-shadow: ${theme.boxShadow.HEADER};
 
   @media (max-width: ${theme.breakpoints.laptop - 1}px) {

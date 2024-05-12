@@ -4,6 +4,7 @@ export const texts = {
   'logout': 'Logout',
   'signup': 'Sign up',
   'create_account': 'Create Account',
+  'login_as_restaurant': 'Log in as restaurant',
 
   'IYTE': 'Izmir Institue of Technology',
   'sign_card_welcome_header': 'Welcome!',
@@ -16,6 +17,7 @@ export const texts = {
   'district': 'District',
   'address': 'Address',
   'phone_number': 'Phone Number',
+  'are_you_restaurant': 'Are you a restaurant?',
 
   'validation.min_char':
     '{{name, capitalFirstLetter}} cannot be shorter than {{value}} characters.',

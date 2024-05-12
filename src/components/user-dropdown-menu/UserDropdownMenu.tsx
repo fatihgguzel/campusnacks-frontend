@@ -2,8 +2,6 @@ import React, { useCallback, useRef, useState } from 'react'
 import { DROPDOWN_MENU_WIDTH, IUserDropdownMenu } from './types'
 import { Button, BUTTON_SIZE, BUTTON_THEME, BUTTON_TYPE } from '../button'
 import { icons } from '../../lib'
-import { useSelector } from 'react-redux'
-import { RootState } from '../../store'
 import { COLOR } from '../../theme'
 import { DropdownMenu } from '../dropdown/dropdown-menu'
 import { wrapperStyles } from './styles'
@@ -13,10 +11,8 @@ export const UserDropdownMenu: React.FC<IUserDropdownMenu> = ({
   items,
   className,
   dataAttr,
+  name,
 }) => {
-  const { user } = useSelector(({ user }: RootState) => ({
-    user: user.data,
-  }))
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const menuRef = useRef<HTMLDivElement>(null)
@@ -38,7 +34,7 @@ export const UserDropdownMenu: React.FC<IUserDropdownMenu> = ({
       <div className={className} {...dataAttr} ref={menuRef}>
         <Button
           icon={icons.user}
-          text={user?.fullName}
+          text={name}
           type={BUTTON_TYPE.GHOST}
           size={BUTTON_SIZE.LARGE}
           theme={BUTTON_THEME.BLACK}

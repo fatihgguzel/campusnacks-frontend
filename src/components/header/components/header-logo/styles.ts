@@ -7,6 +7,7 @@ export const headerLogoStyles = css`
 `
 
 export const campusnacksLogoStyles = (theme: ITheme) => css`
+  max-width: none;
   display: none;
   @media (min-width: ${theme.breakpoints.tablet}px) {
     display: block;
@@ -14,6 +15,7 @@ export const campusnacksLogoStyles = (theme: ITheme) => css`
 `
 
 export const campusnacksStyles = (theme: ITheme) => css`
+  max-width: none;
   @media (min-width: ${theme.breakpoints.tablet}px) {
     display: none;
   }

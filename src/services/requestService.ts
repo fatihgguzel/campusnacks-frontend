@@ -75,7 +75,7 @@ request.interceptors.response.use(
       close: false,
     })
 
-    return Promise.reject(error)
+    return Promise.reject(error ? error : i18n.t('something_wrong'))
   },
 )
 

@@ -16,7 +16,7 @@ import { RequestResponse, setAuthHeader } from '../../services/requestService'
 import { API_CONFIG } from '../../config'
 
 interface IUseAuthApi {
-  login: (data: postLoginBody) => Promise<void>
+  login: (data: postLoginBody, isRestaurant: boolean) => Promise<void>
   signUp: (data: postRegisterBody) => Promise<void>
   refreshToken: () => Promise<boolean>
   sendPasswordResetEmail: (data: postForgotPasswordBody) => Promise<void>
@@ -28,13 +28,15 @@ export const useAuthApi = (): IUseAuthApi => {
   const { setToken, clearToken } = useAuthProvider()
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
-  const login = async (data: postLoginBody) => {
+  const login = async (data: postLoginBody, isRestaurant: boolean) => {
     setIsLoading(true)
     try {
       const res: RequestResponse<postLoginResponse, any> =
         await RequestService.request({
           method: 'POST',
-          url: API_CONFIG.AUTH_LOGIN,
+          url: isRestaurant
+            ? API_CONFIG.AUTH_RESTAURANT_LOGIN
+            : API_CONFIG.AUTH_LOGIN,
           data,
         })
 

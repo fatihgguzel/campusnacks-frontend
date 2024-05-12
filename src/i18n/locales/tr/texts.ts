@@ -4,6 +4,7 @@ export const texts = {
   'logout': 'Çıkış Yap',
   'signup': 'Üye Ol',
   'create_account': 'Hesap Oluştur',
+  'login_as_restaurant': 'Restoran olarak giriş yapın',
 
   'IYTE': 'İzmir Yüksek Teknoloji Enstitüsü',
   'sign_card_welcome_header': 'Hoş geldin!',
@@ -16,6 +17,7 @@ export const texts = {
   'district': 'İlçe',
   'address': 'Adres',
   'phone_number': 'Telefon Numarası',
+  'are_you_restaurant': 'Restoran mısınız?',
 
   'validation.min_char':
     '{{name, capitalFirstLetter}}, {{value}} karakterden daha kısa olamaz.',

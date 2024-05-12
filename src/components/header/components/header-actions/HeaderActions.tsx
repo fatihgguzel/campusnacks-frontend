@@ -1,5 +1,5 @@
 import React, { useCallback, useLayoutEffect, useState } from 'react'
-import { RootState } from '../../../../store'
+import { RootState, selectRestaurant, selectUser } from '../../../../store'
 import { dropdownStyles, headerActionsStyles } from './styles'
 import { IHeaderActions, Languages } from './types'
 import {
@@ -7,6 +7,7 @@ import {
   useLanguage,
   useNotification,
   usePageRefresh,
+  useRestaurantApi,
   useUserApi,
 } from '../../../../hooks'
 import { useSelector } from 'react-redux'
@@ -24,10 +25,13 @@ import { icons } from '../../../../lib'
 import { useAuthProvider } from '../../../../provider'
 import { mapLanguages } from '../../../../helpers'
 import { DateTimeService, RequestService } from '../../../../services'
+import { jwtDecode } from 'jwt-decode'
+import { JWTPayload } from '../../../../config'
 
 export const HeaderActions: React.FC<IHeaderActions> = React.memo(
   ({ dataAttr, className }) => {
     const { getUser } = useUserApi()
+    const { getRestaurant } = useRestaurantApi()
     const { token } = useAuthProvider()
     const { t, changeLanguage, fallbackLanguage } = useLanguage()
     const [isSignModalOpen, setSignModalOpen] = useState(false)
@@ -38,9 +42,8 @@ export const HeaderActions: React.FC<IHeaderActions> = React.memo(
     const { error } = useNotification()
     const isTokenExpired = DateTimeService.isTokenExpired(localTokenCreatedAt)
 
-    const { user } = useSelector(({ user }: RootState) => ({
-      user: user.data,
-    }))
+    const user = useSelector(selectUser).data
+    const restaurant = useSelector(selectRestaurant).data
 
     const handleLogout = () => {
       clearToken()
@@ -49,7 +52,13 @@ export const HeaderActions: React.FC<IHeaderActions> = React.memo(
     useLayoutEffect(() => {
       if (token) {
         RequestService.setAuthHeader(token)
-        getUser()
+        const payload = jwtDecode<JWTPayload>(token)
+
+        if (payload.isUser) {
+          getUser()
+        } else {
+          getRestaurant()
+        }
       }
     }, [token])
 
@@ -71,7 +80,7 @@ export const HeaderActions: React.FC<IHeaderActions> = React.memo(
 
     return (
       <>
-        {user || (!isTokenExpired && token) ? (
+        {user || restaurant || (!isTokenExpired && token) ? (
           <>
             <UserDropdownMenu
               items={[
@@ -82,6 +91,7 @@ export const HeaderActions: React.FC<IHeaderActions> = React.memo(
                   onItemClick: () => usePageRefresh(handleLogout),
                 },
               ]}
+              name={user ? user.fullName : restaurant?.name}
             />
           </>
         ) : (

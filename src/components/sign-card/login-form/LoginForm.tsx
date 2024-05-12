@@ -20,10 +20,15 @@ export const LoginForm: React.FC<ILoginForm> = React.memo(
     const [isEmailValid, setIsEmailValid] = useState(false)
     const [password, setPassword] = useState('')
     const [isPasswordValid, setIsPasswordValid] = useState(false)
+    const [isRestaurant, setIsRestaurant] = useState(false)
 
     const onSubmitHandler = useCallback(async () => {
-      login({ email, password })
-    }, [email, password])
+      login({ email, password }, isRestaurant)
+    }, [email, password, isRestaurant])
+
+    const onRestaurantClickHandler = useCallback(() => {
+      setIsRestaurant(true)
+    }, [])
 
     const onForgotClickHandler = useCallback(() => {
       //changeState(SIGN_CARD_TYPE.RESET_PASSWORD)
@@ -103,8 +108,17 @@ export const LoginForm: React.FC<ILoginForm> = React.memo(
             onClick={onForgotClickHandler}
           />
           <Button
+            isLink
             size={BUTTON_SIZE.SMALL}
-            text={t('login')}
+            text={t('are_you_restaurant')}
+            theme={BUTTON_THEME.PRIMARY}
+            type={BUTTON_TYPE.GHOST}
+            className="forgot-password"
+            onClick={onRestaurantClickHandler}
+          />
+          <Button
+            size={BUTTON_SIZE.SMALL}
+            text={isRestaurant ? t('login_as_restaurant') : t('login')}
             theme={BUTTON_THEME.PRIMARY}
             isLoading={isLoading}
             onClick={onSubmitHandler}
