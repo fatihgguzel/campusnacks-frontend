@@ -23,7 +23,7 @@ export const values = {
     big: 120,
   },
   columnWidth: {
-    DEFAULT: 282,
+    DEFAULT: 335,
   },
   formElementHeight: {
     xsmall: 25,
@@ -48,5 +48,10 @@ export const values = {
     large: 350,
     medium: 250,
     small: 200,
+  },
+  headerInputWidth: {
+    DEFAULT: 550,
+    medium: 475,
+    small: 320,
   },
 }

@@ -31,4 +31,8 @@ export const texts = {
   'already_member': 'Zaten üye misiniz ?',
 
   'something_wrong': 'Bir şeyler yanlış gözüküyor, üzerinde çalışıyoruz.',
+
+  'search_restaurant': 'Restoran arayın',
+  'restaurant_busy': 'Çok Yoğun',
+  'restaurant_has_delivery': 'Ücretsiz',
 }

@@ -31,4 +31,8 @@ export const texts = {
   'already_member': 'Already member ?',
 
   'something_wrong': 'Something seems wrong, we are working on it.',
+
+  'search_restaurant': 'Search a restaurant',
+  'restaurant_busy': 'Busy',
+  'restaurant_has_delivery': 'Free',
 }

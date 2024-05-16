@@ -34,11 +34,15 @@ export enum COLOR {
 
   dark2_100 = '#d7d7db',
 
+  background_100 = '#EFF2F8',
+
   outline_100 = '#E5E5E8',
 
   overlay_modal = '#212121',
   overlay_card = '#993d00',
   overlay_card2 = '#662900',
+
+  border_100 = '#ebebeb',
 }
 
 export type ColorSet<T> = valueOf<T, COLOR>

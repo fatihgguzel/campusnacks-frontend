@@ -7,47 +7,44 @@ import { DropdownMenu } from '../dropdown/dropdown-menu'
 import { wrapperStyles } from './styles'
 import { useClickOutside } from '../../hooks'
 
-export const UserDropdownMenu: React.FC<IUserDropdownMenu> = ({
-  items,
-  className,
-  dataAttr,
-  name,
-}) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+export const UserDropdownMenu: React.FC<IUserDropdownMenu> = React.memo(
+  ({ items, className, dataAttr, name }) => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
 
-  const menuRef = useRef<HTMLDivElement>(null)
-  const onClickOutside = useCallback(() => {
-    setIsMenuOpen(false)
-  }, [])
-  useClickOutside(menuRef, onClickOutside)
-
-  const menuClickHandler = () => {
-    if (isMenuOpen) {
+    const menuRef = useRef<HTMLDivElement>(null)
+    const onClickOutside = useCallback(() => {
       setIsMenuOpen(false)
-    } else {
-      setIsMenuOpen(true)
-    }
-  }
+    }, [])
+    useClickOutside(menuRef, onClickOutside)
 
-  return (
-    <>
-      <div className={className} {...dataAttr} ref={menuRef}>
-        <Button
-          icon={icons.user}
-          text={name}
-          type={BUTTON_TYPE.GHOST}
-          size={BUTTON_SIZE.LARGE}
-          theme={BUTTON_THEME.BLACK}
-          iconSize={24}
-          iColor={COLOR.black_100}
-          onClick={menuClickHandler}
-        />
-        <div css={wrapperStyles(DROPDOWN_MENU_WIDTH.SMALL)}>
-          {isMenuOpen && (
-            <DropdownMenu className="dropdown-menu" items={items} />
-          )}
+    const menuClickHandler = () => {
+      if (isMenuOpen) {
+        setIsMenuOpen(false)
+      } else {
+        setIsMenuOpen(true)
+      }
+    }
+
+    return (
+      <>
+        <div className={className} {...dataAttr} ref={menuRef}>
+          <Button
+            icon={icons.user}
+            text={name}
+            type={BUTTON_TYPE.GHOST}
+            size={BUTTON_SIZE.LARGE}
+            theme={BUTTON_THEME.BLACK}
+            iconSize={24}
+            iColor={COLOR.black_100}
+            onClick={menuClickHandler}
+          />
+          <div css={wrapperStyles(DROPDOWN_MENU_WIDTH.SMALL)}>
+            {isMenuOpen && (
+              <DropdownMenu className="dropdown-menu" items={items} />
+            )}
+          </div>
         </div>
-      </div>
-    </>
-  )
-}
+      </>
+    )
+  },
+)
