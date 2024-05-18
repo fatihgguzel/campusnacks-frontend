@@ -10,4 +10,5 @@ export const API_CONFIG = {
 
   USER: '/user',
   RESTAURANT: '/restaurant',
+  RESTAURANTS: '/restaurants',
 }

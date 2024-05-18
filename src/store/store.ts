@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 import userReducer from './user/userSlice'
 import restaurantReducer from './restaurant/restaurantSlice'
+import restaurantsReducer from './restaurants/restaurantsSlice'
 import {
   persistStore,
   FLUSH,
@@ -15,6 +16,7 @@ export const store = configureStore({
   reducer: {
     user: userReducer,
     restaurant: restaurantReducer,
+    restaurants: restaurantsReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

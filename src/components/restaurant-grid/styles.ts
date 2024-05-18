@@ -4,7 +4,7 @@ import { breakpoints, dimensions, gap, ITheme } from '../../theme'
 const calcWidth = (column: number): number =>
   dimensions.columnWidth.DEFAULT * column + gap.large * (column - 1)
 
-export const wrapperStyles = (thene: ITheme) => css`
+export const wrapperStyles = (theme: ITheme) => css`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -59,4 +59,12 @@ export const gridStyles = (theme: ITheme) => css`
   flex-wrap: wrap;
   width: 100%;
   gap: ${gap.large}px;
+  padding-bottom: ${theme.spacing['4xlarge']};
+`
+
+export const loaderWrapperStyles = () => css`
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  height: 16px;
 `

@@ -27,7 +27,10 @@ export const RestaurantCard: React.FC<IRestaurantCard> = React.memo(
         onMouseLeave={() => setIsHovered(false)}
       >
         <div className="restaurant-thumbnail-placeholder">
-          <img className="placeholder-img" src={placeholder}></img>
+          <img
+            className="placeholder-img"
+            src={thumbnailUrl ? thumbnailUrl : placeholder}
+          ></img>
         </div>
         <div css={cardInfoStyles}>
           <div className="restaurant-name">{restaurantName}</div>

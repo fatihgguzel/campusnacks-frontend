@@ -1,3 +1,6 @@
 export * from './store'
 export * from './user'
 export * from './selectors'
+export * from './restaurant'
+export * from './restaurants'
+export * from './types'
