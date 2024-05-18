@@ -2,6 +2,9 @@ import { RouterProvider, createBrowserRouter, Navigate } from 'react-router-dom'
 import { UnprotectedPageLayout, ProtectedPageLayout } from '../layouts'
 import { MainLayout } from '../layouts/main-layout'
 import { MainPage } from '../pages'
+import { RestaurantOrders } from '../pages/restaurant-orders'
+import { RestaurantSettings } from '../pages/restaurant-settings'
+import { RestaurantMenuSettings } from '../pages/restaurant-menu-settings'
 
 const Routes = () => {
   const routesForPublic = [
@@ -31,7 +34,20 @@ const Routes = () => {
     {
       path: '/',
       element: <ProtectedPageLayout />,
-      children: [],
+      children: [
+        {
+          path: 'orders',
+          element: <RestaurantOrders />,
+        },
+        {
+          path: 'settings',
+          element: <RestaurantSettings />,
+        },
+        {
+          path: 'menu',
+          element: <RestaurantMenuSettings />,
+        },
+      ],
     },
   ]
 

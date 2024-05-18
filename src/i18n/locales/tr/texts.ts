@@ -35,4 +35,8 @@ export const texts = {
   'search_restaurant': 'Restoran arayın',
   'restaurant_busy': 'Çok Yoğun',
   'restaurant_has_delivery': 'Ücretsiz',
+
+  'orders': 'Siparişler',
+  'settings': 'Ayarlar',
+  'menu': 'Menü',
 }

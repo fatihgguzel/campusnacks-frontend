@@ -1,5 +1,7 @@
 import React, { useCallback, useLayoutEffect, useState } from 'react'
-import { RootState, selectRestaurant, selectUser } from '../../../../store'
+import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { selectRestaurant, selectUser } from '../../../../store'
 import { dropdownStyles, headerActionsStyles } from './styles'
 import { IHeaderActions, Languages } from './types'
 import {
@@ -10,7 +12,6 @@ import {
   useRestaurantApi,
   useUserApi,
 } from '../../../../hooks'
-import { useSelector } from 'react-redux'
 import { Button, BUTTON_TYPE } from '../../../button'
 import { Modal, MODAL_POSITION } from '../../../modal'
 import { SignCard } from '../../../sign-card'
@@ -41,6 +42,7 @@ export const HeaderActions: React.FC<IHeaderActions> = React.memo(
     const localTokenCreatedAt = localStorage.getItem('tokenCreatedAt') || ''
     const { error } = useNotification()
     const isTokenExpired = DateTimeService.isTokenExpired(localTokenCreatedAt)
+    const navigate = useNavigate()
 
     const user = useSelector(selectUser).data
     const restaurant = useSelector(selectRestaurant).data
@@ -70,7 +72,6 @@ export const HeaderActions: React.FC<IHeaderActions> = React.memo(
 
       try {
         changeLanguage(lang)
-
         localStorage.setItem('currentLanguage', lang)
       } catch {
         error(t('something_wrong'))
@@ -78,19 +79,46 @@ export const HeaderActions: React.FC<IHeaderActions> = React.memo(
       }
     }, [])
 
+    const restaurantMenuItems = restaurant
+      ? [
+          {
+            name: t('orders'),
+            value: 'orders',
+            //icon: icons.restaurant-orders,
+            onItemClick: () => navigate('/orders'),
+          },
+          {
+            name: t('settings'),
+            value: 'settings',
+            //icon: icons.restaurant-settings,
+            onItemClick: () => navigate('/settings'),
+          },
+          {
+            name: t('menu'),
+            value: 'menu',
+            //icon: icons.menu-restaurant-settings,
+            onItemClick: () => navigate('/menu'),
+          },
+        ]
+      : []
+
+    const commonMenuItems = [
+      {
+        name: t('logout'),
+        value: 'logout',
+        icon: icons.logout,
+        onItemClick: () => usePageRefresh(handleLogout),
+      },
+    ]
+
+    const menuItems = [...restaurantMenuItems, ...commonMenuItems]
+
     return (
       <>
         {user || restaurant || (!isTokenExpired && token) ? (
           <>
             <UserDropdownMenu
-              items={[
-                {
-                  name: t('logout'),
-                  value: t('logout'),
-                  icon: icons.logout,
-                  onItemClick: () => usePageRefresh(handleLogout),
-                },
-              ]}
+              items={menuItems}
               name={user ? user.fullName : restaurant?.name}
             />
           </>

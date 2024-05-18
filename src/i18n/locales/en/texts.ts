@@ -35,4 +35,8 @@ export const texts = {
   'search_restaurant': 'Search a restaurant',
   'restaurant_busy': 'Busy',
   'restaurant_has_delivery': 'Free',
+
+  'orders': 'Orders',
+  'settings': 'Settings',
+  'menu': 'Menu',
 }
