@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDrag } from 'react-dnd'
-import { buttonStyles, cardStyles } from '../../styles'
+import { cancelButtonStyles, cardStyles, moveButtonStyles } from '../../styles'
 import { IOrder } from '../../OrdersBoard'
 
 export const OrderCard = ({
@@ -26,25 +26,25 @@ export const OrderCard = ({
     switch (order.status) {
       case 'New':
         return (
-          <button css={buttonStyles} onClick={() => onMoveNext(order.id)}>
+          <button css={moveButtonStyles} onClick={() => onMoveNext(order.id)}>
             Move to Preparing
           </button>
         )
       case 'Preparing':
         return (
-          <button css={buttonStyles} onClick={() => onMoveNext(order.id)}>
+          <button css={moveButtonStyles} onClick={() => onMoveNext(order.id)}>
             Move to On the Way
           </button>
         )
       case 'On the Way':
         return (
-          <button css={buttonStyles} onClick={() => onMoveNext(order.id)}>
+          <button css={moveButtonStyles} onClick={() => onMoveNext(order.id)}>
             Move to Delivered
           </button>
         )
       case 'Delivered':
         return (
-          <button css={buttonStyles} onClick={() => onComplete(order.id)}>
+          <button css={moveButtonStyles} onClick={() => onComplete(order.id)}>
             Complete Order
           </button>
         )
@@ -73,9 +73,11 @@ export const OrderCard = ({
       <div>
         <span>Phone Number:</span> <span>{order.phone}</span>
       </div>
-      <button css={buttonStyles} onClick={() => onCancel(order.id)}>
-        Cancel Order
-      </button>
+      {order.status !== 'Completed' && order.status !== 'Canceled' && (
+        <button css={cancelButtonStyles} onClick={() => onCancel(order.id)}>
+          Cancel Order
+        </button>
+      )}
       {getNextStatusButton()}
     </div>
   )

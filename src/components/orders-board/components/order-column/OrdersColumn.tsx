@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import { useDrop } from 'react-dnd'
-import { css } from '@emotion/react'
 import { OrderCard } from '../order-card/OrderCard'
 import { IOrder } from '../../OrdersBoard'
 import {
-  buttonStyles,
+  cancelButtonStyles,
   columnStyles,
   columnTitleStyles,
   newOrderColumnStyles,
@@ -54,7 +53,7 @@ export const OrdersColumn = ({
         css={(theme) => columnTitleStyles(theme, isMobileView)}
         onClick={() => isMobileView && setExpanded(!expanded)}
       >
-        {title}
+        {title} ({orders.length})
         {isMobileView && <span>{expanded ? '▲' : '▼'}</span>}
       </div>
       {(expanded || !isMobileView) &&
@@ -69,7 +68,7 @@ export const OrdersColumn = ({
         ))}
       {(status === 'Completed' || status === 'Canceled') &&
         orders.length > 0 && (
-          <button css={buttonStyles} onClick={() => onClear?.(status)}>
+          <button css={cancelButtonStyles} onClick={() => onClear?.(status)}>
             Clear Orders
           </button>
         )}
