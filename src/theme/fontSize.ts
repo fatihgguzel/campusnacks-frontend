@@ -6,9 +6,10 @@ export const fontSize = {
   'base': '14px',
   'medium': '16px',
   'large': '18px',
-  'xlarge': '24px',
-  '2xlarge': '36px',
-  '3xlarge': '48px',
+  'xlarge': '20px',
+  '2xlarge': '24px',
+  '3xlarge': '36px',
+  '4xlarge': '48px',
 }
 
 export type IFontSize = valueOf<typeof fontSize, string>

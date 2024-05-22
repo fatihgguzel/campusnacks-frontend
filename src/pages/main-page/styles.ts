@@ -1,5 +1,5 @@
 import { css } from '@emotion/react'
-import { ITheme } from '../theme'
+import { ITheme } from '../../theme'
 
 export const wrapperStyles = (theme: ITheme) => css`
   max-width: 100vw;

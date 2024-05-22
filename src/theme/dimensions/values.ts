@@ -24,7 +24,9 @@ export const values = {
   },
   columnWidth: {
     DEFAULT: 335,
+    BIG: 452,
   },
+
   formElementHeight: {
     xsmall: 25,
     DEFAULT: 35,

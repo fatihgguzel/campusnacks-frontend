@@ -32,10 +32,14 @@ export const restaurantsSlice = createSlice({
       if (action.payload.data) {
         state.totalCount = action.payload.data.totalCount
         if (state.restaurants.data) {
-          state.restaurants.data = [
-            ...state.restaurants.data,
-            ...action.payload.data.restaurants,
-          ]
+          if (action.payload.isInitialRender) {
+            state.restaurants.data = [...action.payload.data.restaurants]
+          } else {
+            state.restaurants.data = [
+              ...state.restaurants.data,
+              ...action.payload.data.restaurants,
+            ]
+          }
         } else {
           state.restaurants.data = action.payload.data.restaurants
         }

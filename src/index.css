@@ -21,5 +21,35 @@ body {
 * {
   font-family: 'Open Sans';
   box-sizing: border-box;
-  max-width: 100%;
+}
+
+/* For Mozilla Firefox stylings */
+@supports (-moz-appearance: none) {
+  * {
+    scrollbar-color: #ff751a transparent !important;
+  }
+}
+
+::-webkit-scrollbar {
+  appearance: none;
+  width: 8px;
+  height: 8px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 12px;
+  background-color: #ff751a;
+  min-height: 50px;
+}
+
+@media only screen and (max-width: 1024px) {
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+  }
 }

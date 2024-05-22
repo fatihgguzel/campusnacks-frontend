@@ -35,6 +35,7 @@ export const wrapperStyles = (isHovered: boolean) => (theme: ITheme) => css`
       transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
       opacity 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     width: 100%;
+    max-width: none;
   }
 `
 

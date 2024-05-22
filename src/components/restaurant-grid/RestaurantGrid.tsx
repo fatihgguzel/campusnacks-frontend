@@ -14,12 +14,15 @@ import { useDebouncer } from '../../hooks'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState, setRestaurantsQuery } from '../../store'
 import { Loader } from '../../lib/loader'
+import { useNavigate } from 'react-router-dom'
 
 export const RestaurantGrid: React.FC<IRestaurantGrid> = React.memo(
   ({ className, dataAttr, scrollWrapperRef }) => {
     const { t } = useLanguage()
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const [searchValue, setSearchValue] = useState('')
+    const [isInitialRender, setIsInitialRender] = useState(true)
     const [restaurants, setRestaurants] = useState<IRestaurant[]>([])
     const [filteredRestaurants, setFilteredRestaurants] =
       useState<IRestaurant[]>(restaurants)
@@ -40,8 +43,12 @@ export const RestaurantGrid: React.FC<IRestaurantGrid> = React.memo(
 
     useEffect(() => {
       const fetchRestaurants = () => {
-        console.log(555)
-        getRestaurants()
+        if (isInitialRender) {
+          getRestaurants(isInitialRender)
+          setIsInitialRender(false)
+        } else {
+          getRestaurants()
+        }
       }
       fetchRestaurants()
     }, [restaurantsQuery])
@@ -50,11 +57,15 @@ export const RestaurantGrid: React.FC<IRestaurantGrid> = React.memo(
       !searchValue && setRestaurants(restaurantsArr as IRestaurant[])
     }, [restaurantsArr])
 
+    const handleOnClick = (restaurantId: number) => {
+      navigate(`/restaurant/${restaurantId}`)
+    }
+
     useEffect(() => {
       const handleScroll = () => {
         const gridWrapper = scrollWrapperRef.current
 
-        if (!gridWrapper || searchValue) {
+        if (!gridWrapper || searchValue || isInitialRender) {
           return
         }
 
@@ -80,7 +91,7 @@ export const RestaurantGrid: React.FC<IRestaurantGrid> = React.memo(
       return () => {
         gridWrapper?.removeEventListener('scroll', handleScroll)
       }
-    }, [restaurantsQuery, searchValue, totalRestaurantCount])
+    }, [restaurantsQuery, searchValue, totalRestaurantCount, isInitialRender])
 
     const debouncedSearch = useDebouncer(
       () => {
@@ -122,6 +133,7 @@ export const RestaurantGrid: React.FC<IRestaurantGrid> = React.memo(
               restaurantId={restaurant.id}
               thumbnailUrl={restaurant.imageUrl}
               key={index}
+              onClick={handleOnClick}
             />
           ))}
 

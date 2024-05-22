@@ -33,6 +33,7 @@ export const texts = {
   'something_wrong': 'Bir şeyler yanlış gözüküyor, üzerinde çalışıyoruz.',
 
   'search_restaurant': 'Restoran arayın',
+  'search_in_menu': 'Menüde ara',
   'restaurant_busy': 'Çok Yoğun',
   'restaurant_has_delivery': 'Ücretsiz',
 }

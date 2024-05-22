@@ -9,6 +9,10 @@ export interface getConfigTypeFileParams {
   fileName: string;
 }
 
+export interface getRestaurantContentParams {
+  restaurantId: number;
+}
+
 export interface getRestaurantsQuery {
   offset: number;
   limit: number;
@@ -26,6 +30,8 @@ export interface postCreateRestaurantBody {
   nHood: string;
   street: string;
   no: string;
+  campus?: ENUMS.Campuses;
+  password: string;
 }
 
 export interface postForgotPasswordBody {
@@ -51,6 +57,14 @@ export interface postResetPasswordBody {
   email: string;
   shortCode: string;
   newPassword: string;
+}
+
+export interface postRestaurantAddItemBody {
+  name: string;
+  description: string;
+  imageUrl?: string;
+  price: number;
+  itemType: ENUMS.ItemTypes;
 }
 
 export interface putAuthorizeAdminUserBody {

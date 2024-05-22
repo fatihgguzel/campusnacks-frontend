@@ -33,6 +33,7 @@ export const texts = {
   'something_wrong': 'Something seems wrong, we are working on it.',
 
   'search_restaurant': 'Search a restaurant',
+  'search_in_menu': 'Search in menu',
   'restaurant_busy': 'Busy',
   'restaurant_has_delivery': 'Free',
 }

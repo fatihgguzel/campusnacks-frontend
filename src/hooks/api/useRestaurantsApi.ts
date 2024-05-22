@@ -3,11 +3,16 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setRestaurants } from '../../store/restaurants/restaurantsSlice'
 import { API_CONFIG } from '../../config'
 import { RequestResponse, RequestService } from '../../services'
-import { getRestaurantsResponse } from '../../types/api/responseObjects'
+import {
+  getRestaurantContentResponse,
+  getRestaurantsResponse,
+} from '../../types/api/responseObjects'
 import { RootState } from '../../store'
+import { setPublicRestaurant } from '../../store/public-restaurant/publicRestaurantSlice'
 
 interface IUseRestaurantsApiReturn {
-  getRestaurants: () => Promise<void>
+  getRestaurants: (isInitialRender?: boolean) => Promise<void>
+  getRestaurantContent: (restaurantId: string) => Promise<void>
   isLoading: boolean
 }
 
@@ -19,7 +24,7 @@ export const useRestaurantsApi = (): IUseRestaurantsApiReturn => {
     restaurantsQuery: restaurants.restaurantsQuery,
   }))
 
-  const getRestaurants = async () => {
+  const getRestaurants = async (isInitialRender?: boolean) => {
     setIsLoading(true)
     dispatch(setRestaurants({ isLoading: true }))
     try {
@@ -30,15 +35,33 @@ export const useRestaurantsApi = (): IUseRestaurantsApiReturn => {
           params: { ...restaurantsQuery },
         })
 
-      dispatch(setRestaurants({ data: res.data.data }))
+      dispatch(setRestaurants({ data: res.data.data, isInitialRender }))
     } finally {
       setIsLoading(false)
       dispatch(setRestaurants({ isLoading: false }))
     }
   }
 
+  const getRestaurantContent = async (restaurantId: string) => {
+    setIsLoading(true)
+    dispatch(setPublicRestaurant({ isLoading: true }))
+    try {
+      const res: RequestResponse<getRestaurantContentResponse, any> =
+        await RequestService.callApi({
+          method: 'GET',
+          url: API_CONFIG.RESTAURANTS + `/${restaurantId}`,
+        })
+
+      dispatch(setPublicRestaurant({ data: res.data.data }))
+    } finally {
+      setIsLoading(false)
+      dispatch(setPublicRestaurant({ isLoading: false }))
+    }
+  }
+
   return {
     getRestaurants,
     isLoading,
+    getRestaurantContent,
   }
 }

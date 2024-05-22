@@ -18,5 +18,5 @@
     "jsxImportSource": "@emotion/react",
     "types": ["@emotion/react/types/css-prop"]
   },
-  "include": ["./src/**/*"]
+  "include": ["./src/**/*", "window.d.ts"]
 }

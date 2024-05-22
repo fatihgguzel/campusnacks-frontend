@@ -10,4 +10,5 @@ export interface IRestaurantCard {
   isBusy: boolean
   hasDelivery: boolean
   restaurantName: string
+  onClick: (restaurantId: number) => void
 }

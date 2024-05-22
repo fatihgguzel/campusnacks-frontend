@@ -1,1 +1,2 @@
-export * from './MainPage'
+export * from './main-page'
+export * from './restaurant-page'

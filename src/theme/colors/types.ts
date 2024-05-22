@@ -34,6 +34,8 @@ export enum COLOR {
 
   dark2_100 = '#d7d7db',
 
+  gray_60 = '#707070',
+
   background_100 = '#EFF2F8',
 
   outline_100 = '#E5E5E8',

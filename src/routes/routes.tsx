@@ -1,7 +1,11 @@
 import { RouterProvider, createBrowserRouter, Navigate } from 'react-router-dom'
-import { UnprotectedPageLayout, ProtectedPageLayout } from '../layouts'
-import { MainLayout } from '../layouts/main-layout'
-import { MainPage } from '../pages'
+import {
+  UnprotectedPageLayout,
+  ProtectedPageLayout,
+  MainLayout,
+  RestaurantPageLayout,
+} from '../layouts'
+import { MainPage, RestaurantPage } from '../pages'
 
 const Routes = () => {
   const routesForPublic = [
@@ -16,6 +20,16 @@ const Routes = () => {
             {
               path: '/',
               element: <MainPage />,
+            },
+          ],
+        },
+        {
+          path: '/restaurant/:id',
+          element: <RestaurantPageLayout />,
+          children: [
+            {
+              path: '',
+              element: <RestaurantPage />,
             },
           ],
         },

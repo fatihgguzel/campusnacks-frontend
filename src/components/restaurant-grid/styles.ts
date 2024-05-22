@@ -66,5 +66,4 @@ export const loaderWrapperStyles = () => css`
   width: 100vw;
   display: flex;
   justify-content: center;
-  height: 16px;
 `

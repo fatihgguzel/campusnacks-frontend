@@ -3,7 +3,7 @@ import iziToast from 'izitoast'
 import i18n from 'i18next'
 import { theme } from '../theme'
 import { getRefreshTokenResponse } from '../types/api/responseObjects'
-import { APP_CONFIG, API_CONFIG } from '../config'
+import { APP_CONFIG, API_CONFIG, BE_BASE_URL } from '../config'
 import { DateTimeService } from '.'
 import env from 'react-dotenv'
 
@@ -14,7 +14,7 @@ const localToken = localStorage.getItem('token')
 export const extRequest = axios.create()
 
 export const request = axios.create({
-  baseURL: env?.BE_BASE_URL,
+  baseURL: env?.BE_BASE_URL || BE_BASE_URL,
   headers: {
     common: {
       ...(localToken ? { Authorization: `Bearer ${localToken}` } : {}),

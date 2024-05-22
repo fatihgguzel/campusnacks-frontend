@@ -15,11 +15,13 @@ export const RestaurantCard: React.FC<IRestaurantCard> = React.memo(
     minimumPrice,
     restaurantId,
     restaurantName,
+    onClick,
   }) => {
     const [isHovered, setIsHovered] = useState(false)
 
     return (
       <div
+        onClick={() => onClick(restaurantId)}
         css={wrapperStyles(isHovered)}
         className={className}
         {...dataAttr}
@@ -30,7 +32,7 @@ export const RestaurantCard: React.FC<IRestaurantCard> = React.memo(
           <img
             className="placeholder-img"
             src={thumbnailUrl ? thumbnailUrl : placeholder}
-          ></img>
+          />
         </div>
         <div css={cardInfoStyles}>
           <div className="restaurant-name">{restaurantName}</div>
