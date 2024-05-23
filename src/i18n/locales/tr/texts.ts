@@ -37,6 +37,8 @@ export const texts = {
   'restaurant_busy': 'Çok Yoğun',
   'restaurant_has_delivery': 'Ücretsiz',
   'restaurant_no_item': 'Gösterilecek bir menü yok',
+  'restaurant_open': 'Açık',
+  'restaurant_closed': 'Kapalı',
 
   'your_items': 'Ürünleriniz',
   'total_price': 'Toplam',

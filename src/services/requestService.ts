@@ -38,7 +38,7 @@ request.interceptors.response.use(
     const { config } = error
 
     // Session expired
-    if ([401].includes(error.response.status)) {
+    if ([401].includes(error?.response?.status)) {
       localStorage.removeItem('token')
       localStorage.removeItem('tokenCreatedAt')
 

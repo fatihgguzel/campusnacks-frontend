@@ -30,6 +30,7 @@ export const RestaurantContent: React.FC<IRestaurantContent> = React.memo(
     name,
     isLoading,
     items,
+    isOpen,
   }) => {
     const [searchValue, setSearchValue] = useState('')
     const [filteredItems, setFilteredItems] = useState(items)
@@ -64,6 +65,7 @@ export const RestaurantContent: React.FC<IRestaurantContent> = React.memo(
             name={name}
             hasDelivery={hasDelivery}
             minimumPrice={minimumPrice}
+            isOpen={isOpen}
           />
         </div>
         <div css={containerStyles}>

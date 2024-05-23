@@ -37,6 +37,8 @@ export const texts = {
   'restaurant_busy': 'Busy',
   'restaurant_has_delivery': 'Free',
   'restaurant_no_item': 'There is no item to show.',
+  'restaurant_open': 'Open',
+  'restaurant_closed': 'Closed',
 
   'your_items': 'Your items',
   'total_price': 'Total',

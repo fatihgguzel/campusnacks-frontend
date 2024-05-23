@@ -27,12 +27,10 @@ export const RestaurantPage: React.FC = React.memo(() => {
       cartRestaurantId !== restaurantInfo.id
     ) {
       dispatch(clearCart())
+      dispatch(setRestaurantId({ restaurantId: restaurantInfo?.id || null }))
     }
   }, [restaurantInfo, cartRestaurantId])
 
-  useEffect(() => {
-    dispatch(setRestaurantId({ restaurantId: restaurantInfo?.id || null }))
-  }, [restaurantInfo])
   return (
     <div css={wrapperStyles}>
       <RestaurantContent
@@ -41,6 +39,7 @@ export const RestaurantPage: React.FC = React.memo(() => {
         minimumPrice={restaurantInfo?.minimumPrice}
         isLoading={isLoading}
         items={items}
+        isOpen={restaurantInfo?.isOpen}
       />
     </div>
   )

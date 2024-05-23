@@ -55,6 +55,10 @@ export const restaurantInfoStyles = (theme: ITheme) => css`
   .minimum-price {
     font-weight: ${theme.fontWeight.semiBold};
   }
+
+  .is-open {
+    font-weight: ${theme.fontWeight.semiBold};
+  }
 `
 
 export const loaderWrapperStyles = () => css`

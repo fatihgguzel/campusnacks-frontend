@@ -9,4 +9,5 @@ export interface IRestaurantContent {
   minimumPrice?: number
   isLoading?: boolean
   items?: getRestaurantContentResponse['data']['items']
+  isOpen?: boolean
 }
