@@ -9,6 +9,7 @@ import {
 } from '../../types/api/responseObjects'
 import { RootState } from '../../store'
 import { setPublicRestaurant } from '../../store/public-restaurant/publicRestaurantSlice'
+import { useNavigate } from 'react-router-dom'
 
 interface IUseRestaurantsApiReturn {
   getRestaurants: (isInitialRender?: boolean) => Promise<void>
@@ -18,6 +19,7 @@ interface IUseRestaurantsApiReturn {
 
 export const useRestaurantsApi = (): IUseRestaurantsApiReturn => {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const [isLoading, setIsLoading] = useState(false)
 
   const { restaurantsQuery } = useSelector(({ restaurants }: RootState) => ({
@@ -53,6 +55,9 @@ export const useRestaurantsApi = (): IUseRestaurantsApiReturn => {
         })
 
       dispatch(setPublicRestaurant({ data: res.data.data }))
+    } catch (error: any) {
+      if ([404].includes(error?.response?.status))
+        navigate('/', { replace: true })
     } finally {
       setIsLoading(false)
       dispatch(setPublicRestaurant({ isLoading: false }))

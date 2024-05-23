@@ -36,4 +36,11 @@ export const texts = {
   'search_in_menu': 'Menüde ara',
   'restaurant_busy': 'Çok Yoğun',
   'restaurant_has_delivery': 'Ücretsiz',
+  'restaurant_no_item': 'Gösterilecek bir menü yok',
+
+  'your_items': 'Ürünleriniz',
+  'total_price': 'Toplam',
+
+  'confirm_order': 'Siparişini Ver',
+  'view_cart': 'Sepetini Görüntüle',
 }

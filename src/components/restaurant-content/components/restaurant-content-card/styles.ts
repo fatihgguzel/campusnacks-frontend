@@ -16,11 +16,11 @@ export const wrapperStyles = (isHovered: boolean) => (theme: ITheme) => css`
   width: ${dimensions.columnWidth.BIG}px;
 
   @media (max-width: ${breakpoints.laptop}px) {
-    width: ${dimensions.columnWidth.DEFAULT}px;
+    width: ${dimensions.columnWidth.BIG}px;
   }
 
   @media (max-width: ${breakpoints.tablet}px) {
-    width: ${dimensions.columnWidth.BIG}px;
+    width: ${dimensions.columnWidth.DEFAULT}px;
   }
 
   @media (max-width: ${breakpoints.medium}px) {
@@ -32,6 +32,19 @@ export const wrapperStyles = (isHovered: boolean) => (theme: ITheme) => css`
     : `border: 1px solid ${theme.colors.border.DEFAULT};`}
 
   ${isHovered ? `cursor: pointer;` : `cursor: default;`}
+`
+
+export const addToCartStyles = (isHover: boolean) => (theme: ITheme) => css`
+  position: absolute;
+  bottom: ${theme.gap['large']}px;
+  width: fit-content;
+  right: ${theme.gap['large']}px;
+  display: flex;
+  background: white;
+  border-radius: 200px;
+  padding: ${theme.spacing['3xsmall']};
+  background:  ${isHover ? theme.colors.primary[10] : theme.colors.white.DEFAULT}
+}
 `
 
 export const cardContentStyles = (theme: ITheme) => css`
@@ -66,6 +79,7 @@ export const cardContentStyles = (theme: ITheme) => css`
 
 export const cardThumbnailStyles =
   (isHovered: boolean) => (theme: ITheme) => css`
+    display: flex;
     width: 128px;
     height: 128px;
     border-radius: ${theme.borderRadius[12]};
@@ -74,6 +88,7 @@ export const cardThumbnailStyles =
 
     .placeholder-img {
       ${isHovered ? `transform: scale(102.38%);` : ``}
+      user-select: none;
       border-radius: ${theme.borderRadius[12]};
       background: no-repeat 50%;
       background-size: cover;

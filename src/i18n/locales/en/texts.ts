@@ -36,4 +36,11 @@ export const texts = {
   'search_in_menu': 'Search in menu',
   'restaurant_busy': 'Busy',
   'restaurant_has_delivery': 'Free',
+  'restaurant_no_item': 'There is no item to show.',
+
+  'your_items': 'Your items',
+  'total_price': 'Total',
+
+  'confirm_order': 'Complete your order',
+  'view_cart': 'View your cart',
 }

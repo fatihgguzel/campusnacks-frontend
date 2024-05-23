@@ -1,9 +1,8 @@
 import React, { useCallback, useLayoutEffect, useState } from 'react'
 import { RootState, selectRestaurant, selectUser } from '../../../../store'
-import { dropdownStyles, headerActionsStyles } from './styles'
+import { dropdownStyles, headerActionsStyles, orderCartStyles } from './styles'
 import { IHeaderActions, Languages } from './types'
 import {
-  useAuthApi,
   useLanguage,
   useNotification,
   usePageRefresh,
@@ -21,12 +20,14 @@ import {
   IDropdownItem,
   IDropdownValue,
 } from '../../../dropdown'
-import { icons } from '../../../../lib'
+import { Icon, icons } from '../../../../lib'
 import { useAuthProvider } from '../../../../provider'
 import { mapLanguages } from '../../../../helpers'
 import { DateTimeService, RequestService } from '../../../../services'
 import { jwtDecode } from 'jwt-decode'
 import { JWTPayload } from '../../../../config'
+import { colors } from '../../../../theme'
+import { useNavigate } from 'react-router-dom'
 
 export const HeaderActions: React.FC<IHeaderActions> = React.memo(
   ({ dataAttr, className }) => {
@@ -41,12 +42,28 @@ export const HeaderActions: React.FC<IHeaderActions> = React.memo(
     const localTokenCreatedAt = localStorage.getItem('tokenCreatedAt') || ''
     const { error } = useNotification()
     const isTokenExpired = DateTimeService.isTokenExpired(localTokenCreatedAt)
+    const navigate = useNavigate()
 
     const user = useSelector(selectUser).data
     const restaurant = useSelector(selectRestaurant).data
 
+    const { totalCount, cartRestaurantId } = useSelector(
+      ({ orderCart }: RootState) => ({
+        totalCount: orderCart.totalCount,
+        cartRestaurantId: orderCart.restaurantId,
+      }),
+    )
+
     const handleLogout = () => {
       clearToken()
+    }
+
+    const handleCartOnClick = () => {
+      if (totalCount > 0 && cartRestaurantId) {
+        if (!window.location.href.includes(`/restaurant/${cartRestaurantId}`)) {
+          navigate(`/restaurant/${cartRestaurantId}`)
+        }
+      }
     }
 
     useLayoutEffect(() => {
@@ -102,6 +119,7 @@ export const HeaderActions: React.FC<IHeaderActions> = React.memo(
                 type={BUTTON_TYPE.REVERSE}
                 height={35}
                 onClick={() => setSignModalOpen(true)}
+                className="loginButtonStyles"
               />
               <Button
                 text={t('signup')}
@@ -132,6 +150,14 @@ export const HeaderActions: React.FC<IHeaderActions> = React.memo(
             downIcon={icons.chevron_down}
             onChange={onLanguageChangeHandler}
           />
+        </div>
+        <div css={orderCartStyles} onClick={() => handleCartOnClick()}>
+          <Icon
+            icon={icons.shopping_basket}
+            size={25}
+            color={colors.primary.DEFAULT}
+          />
+          <span className="order-count">{totalCount !== 0 && totalCount}</span>
         </div>
       </>
     )

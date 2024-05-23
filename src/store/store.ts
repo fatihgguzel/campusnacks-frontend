@@ -3,8 +3,10 @@ import userReducer from './user/userSlice'
 import restaurantReducer from './restaurant/restaurantSlice'
 import restaurantsReducer from './restaurants/restaurantsSlice'
 import publicRestaurantReducer from './public-restaurant/publicRestaurantSlice'
+import orderCartReducer from './order-cart/orderCartSlice'
 import {
   persistStore,
+  persistReducer,
   FLUSH,
   REHYDRATE,
   PAUSE,
@@ -12,6 +14,16 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
+
+const persistedOrderCart = persistReducer(
+  {
+    key: 'orderCart',
+    version: 1,
+    storage,
+  },
+  orderCartReducer,
+)
 
 export const store = configureStore({
   reducer: {
@@ -19,6 +31,7 @@ export const store = configureStore({
     restaurant: restaurantReducer,
     restaurants: restaurantsReducer,
     publicRestaurant: publicRestaurantReducer,
+    orderCart: persistedOrderCart,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

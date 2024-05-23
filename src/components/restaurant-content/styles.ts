@@ -8,6 +8,15 @@ export const wrapperStyles = (theme: ITheme) => css`
   display: flex;
   flex-direction: column;
   width: 100%;
+
+  .view-cart-wrapper {
+    position: absolute;
+    bottom: 0;
+    width: 85%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+  }
 `
 
 export const restaurantInfoStyles = (theme: ITheme) => css`
@@ -58,41 +67,19 @@ export const contentWrapperStyles = (theme: ITheme) => css`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 auto;
   width: ${calcWidth(2, dimensions.columnWidth.BIG)}px;
   padding-bottom: ${theme.spacing['4xlarge']};
 
-  @media (max-width: ${breakpoints.laptop}px) {
-    width: ${calcWidth(2, dimensions.columnWidth.DEFAULT)}px;
+  @media (max-width: ${breakpoints.desktop}px) {
+    width: ${calcWidth(1, dimensions.columnWidth.BIG)}px;
   }
 
   @media (max-width: ${breakpoints.tablet}px) {
-    width: ${calcWidth(1, dimensions.columnWidth.BIG)}px;
+    width: ${calcWidth(1, dimensions.columnWidth.DEFAULT)}px;
   }
 
   @media (max-width: ${breakpoints.medium}px) {
     width: ${calcWidth(1, dimensions.columnWidth.DEFAULT)}px;
-  }
-
-  .food {
-    width: ${dimensions.columnWidth.BIG}px;
-
-    @media (max-width: ${breakpoints.laptop}px) {
-      width: ${dimensions.columnWidth.DEFAULT}px;
-    }
-
-    @media (max-width: ${breakpoints.tablet}px) {
-      width: ${dimensions.columnWidth.BIG}px;
-    }
-
-    @media (max-width: ${breakpoints.medium}px) {
-      width: ${dimensions.columnWidth.DEFAULT}px;
-    }
-
-    height: 152px;
-    border-radius: ${theme.borderRadius[5]};
-    border: 1px solid ${theme.colors.primary.DEFAULT};
-    background: white;
   }
 `
 
@@ -111,12 +98,26 @@ export const inputContainerStyles = (theme: ITheme) => css`
   margin: ${theme.gap.large}px;
 
   @media (max-width: ${theme.breakpoints.laptop - 1}px) {
-    width: ${theme.dimensions.headerInputWidth.medium}px;
+    width: ${theme.dimensions.headerInputWidth.small}px;
   }
   @media (max-width: ${theme.breakpoints.tablet - 1}px) {
     width: ${theme.dimensions.headerInputWidth.small}px;
   }
   @media (min-width: ${theme.breakpoints.laptop}px) {
-    width: ${theme.dimensions.headerInputWidth.DEFAULT}px;
+    width: ${theme.dimensions.headerInputWidth.medium}px;
   }
+`
+
+export const containerStyles = (theme: ITheme) => css`
+  display: flex;
+  margin: 0 auto;
+  gap: ${theme.gap['2xlarge']}px;
+`
+
+export const orderCartWrapperStyles = (theme: ITheme) => css`
+  top: ${theme.spacing.large};
+  margin-top: ${theme.spacing.large};
+  position: sticky;
+  width: ${theme.dimensions.orderCartWidth.DEFAULT}px;
+  height: ${theme.dimensions.orderCartHeight.DEFAULT}px;
 `

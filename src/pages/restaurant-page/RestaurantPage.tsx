@@ -1,22 +1,38 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../store'
 import { wrapperStyles } from './styles'
-import { useLanguage, useRestaurantsApi } from '../../hooks'
 import { RestaurantContent } from '../../components/restaurant-content'
+import { clearCart, setRestaurantId } from 'src/store/order-cart'
 
 export const RestaurantPage: React.FC = React.memo(() => {
-  const { t } = useLanguage()
   const { isLoading } = useSelector(({ publicRestaurant }: RootState) => ({
     isLoading: publicRestaurant.items.isLoading,
   }))
 
-  const { restaurantInfo, items } = useSelector(
-    ({ publicRestaurant }: RootState) => ({
+  const dispatch = useDispatch()
+
+  const { restaurantInfo, items, cartRestaurantId } = useSelector(
+    ({ publicRestaurant, orderCart }: RootState) => ({
       restaurantInfo: publicRestaurant.info,
       items: publicRestaurant.items.data,
+      cartRestaurantId: orderCart.restaurantId,
     }),
   )
+
+  useEffect(() => {
+    if (
+      restaurantInfo &&
+      cartRestaurantId &&
+      cartRestaurantId !== restaurantInfo.id
+    ) {
+      dispatch(clearCart())
+    }
+  }, [restaurantInfo, cartRestaurantId])
+
+  useEffect(() => {
+    dispatch(setRestaurantId({ restaurantId: restaurantInfo?.id || null }))
+  }, [restaurantInfo])
   return (
     <div css={wrapperStyles}>
       <RestaurantContent

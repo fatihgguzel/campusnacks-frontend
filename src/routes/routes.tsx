@@ -24,11 +24,11 @@ const Routes = () => {
           ],
         },
         {
-          path: '/restaurant/:id',
+          path: '/restaurant',
           element: <RestaurantPageLayout />,
           children: [
             {
-              path: '',
+              path: '/restaurant/:id',
               element: <RestaurantPage />,
             },
           ],

@@ -34,6 +34,10 @@ export const wrapperStyles = (theme: ITheme) => css`
   @media (min-width: ${breakpoints.xxlarge}px) {
     width: ${calcWidth(6)}px;
   }
+
+  .restaurant-no-item {
+    font-size: ${theme.fontSize['2xlarge']};
+  }
 `
 
 export const inputContainerStyles = (theme: ITheme) => css`

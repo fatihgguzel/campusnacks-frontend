@@ -34,7 +34,7 @@ export const values = {
     big: 46,
   },
   headerDropdownWidth: {
-    DEFAULT: 300,
+    DEFAULT: 280,
     medium: 250,
     small: 200,
     xsmall: 150,
@@ -55,5 +55,17 @@ export const values = {
     DEFAULT: 550,
     medium: 475,
     small: 320,
+  },
+  orderCartWidth: {
+    DEFAULT: 300,
+  },
+  orderCartHeight: {
+    DEFAULT: 600,
+  },
+  orderCartFooterHeight: {
+    DEFAULT: 140,
+  },
+  orderCartItemHeight: {
+    DEFAULT: 105,
   },
 }

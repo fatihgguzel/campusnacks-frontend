@@ -3,7 +3,7 @@ import { breakpoints, ITheme, theme } from '../../theme'
 
 export const headerStyles = (theme: ITheme) => css`
   height: ${theme.dimensions.headerHeight.DEFAULT}px;
-  padding: 0 ${theme.spacing['8xlarge']};
+  padding: 0 ${theme.spacing['5xlarge']};
   display: flex;
   position: sticky;
   align-items: center;
@@ -20,7 +20,7 @@ export const headerStyles = (theme: ITheme) => css`
   }
 
   @media (max-width: ${theme.breakpoints.medium - 1}px) {
-    padding: 0 ${theme.spacing['large']};
+    padding: 0 ${theme.spacing['3xsmall']};
   }
 
   .left-side,
@@ -42,11 +42,11 @@ export const dropdownStyles = (theme: ITheme) => css`
   display: flex;
   width: ${theme.dimensions.headerDropdownWidth.DEFAULT}px;
   align-items: center;
-  margin: 0 ${theme.spacing.large} 0 ${theme.spacing['5xlarge']};
+  margin: 0 ${theme.spacing.large} 0 ${theme.spacing['large']};
 
   @media (min-width: ${theme.breakpoints.laptop}px) and (max-width: ${theme
       .breakpoints.desktop}px) {
-    margin: 0 ${theme.spacing['5xlarge']};
+    margin: 0 ${theme.spacing['3xlarge']};
   }
 
   @media (max-width: ${theme.breakpoints.tablet}px) {

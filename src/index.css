@@ -30,6 +30,14 @@ body {
   }
 }
 
+img {
+  user-select: none;
+}
+
+span {
+  user-select: none;
+}
+
 ::-webkit-scrollbar {
   appearance: none;
   width: 8px;

@@ -1,6 +1,7 @@
 export interface IRestaurantContentCard {
-  name?: string
-  description?: string
+  id: number
+  name: string
+  description: string
   imageUrl?: string | null
-  price?: number
+  price: number
 }
