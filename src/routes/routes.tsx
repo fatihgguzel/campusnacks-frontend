@@ -4,8 +4,10 @@ import {
   ProtectedPageLayout,
   MainLayout,
   RestaurantPageLayout,
+  RestaurantLayout,
 } from '../layouts'
 import { MainPage, RestaurantPage } from '../pages'
+import { RestaurantOrdersPage } from 'src/pages/restaurant-orders-page'
 
 const Routes = () => {
   const routesForPublic = [
@@ -45,7 +47,22 @@ const Routes = () => {
     {
       path: '/',
       element: <ProtectedPageLayout />,
-      children: [],
+      children: [
+        {
+          path: '/vendor',
+          element: <RestaurantLayout />,
+          children: [
+            {
+              path: '/vendor/orders',
+              element: <RestaurantOrdersPage />,
+            },
+            {
+              path: '',
+              element: <Navigate to="/vendor/orders" replace />,
+            },
+          ],
+        },
+      ],
     },
   ]
 

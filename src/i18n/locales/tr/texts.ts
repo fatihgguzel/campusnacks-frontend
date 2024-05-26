@@ -45,4 +45,31 @@ export const texts = {
 
   'confirm_order': 'Siparişini Ver',
   'view_cart': 'Sepetini Görüntüle',
+
+  'user_give_order': 'Siparişi başarıyla verdiniz',
+
+  'get_active_orders': 'Aktif Siparişler (Son 24 saat)',
+  'get_all_orders': 'Bütün siparişler',
+
+  'first': 'Birinci',
+  'last': 'Sonuncu',
+
+  'PENDING': 'Bekliyor',
+  'ONDELIVER': 'Yolda',
+  'CANCELLED': 'İptal edildi',
+  'COMPLETED': 'Teslim edildi',
+
+  'DELIVERY': 'Paket',
+  'TAKEOUT': 'Gel-Al',
+
+  'order_status': 'Sipariş Durumu',
+  'order_date': 'Sipariş Tarihi',
+  'delivery_type': 'Teslim Şekli',
+  'cost': 'Tutar',
+
+  'set_on_deliver': 'Siparişi yola çıkar',
+  'set_complete': 'Siparişi teslim et',
+  'cancel_order': 'Siparişi iptal et',
+  'show_details': 'Detayları göster',
+  'items': 'Ürünler',
 }

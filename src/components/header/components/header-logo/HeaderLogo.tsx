@@ -10,10 +10,10 @@ import campusnacks from '../../../../assets/images/campusnacks.svg'
 import campusnacksLogo from '../../../../assets/images/campusnacks-logo.svg'
 
 export const HeaderLogo: React.FC<IHeaderLogo> = React.memo(
-  ({ className, dataAttr }) => {
+  ({ className, dataAttr, logoTo }) => {
     const navigate = useNavigate()
     const handleOnClick = useCallback(() => {
-      navigate('/', { replace: true })
+      navigate(logoTo ? logoTo : '/', { replace: true })
     }, [])
 
     return (

@@ -11,6 +11,7 @@ import { ILoginForm } from './types'
 import { SIGN_CARD_TYPE } from '../types'
 import { Input, INPUT_SIZE, INPUT_WIDTH } from '../../input'
 import { actionsStyles, formInnerStyles } from './styles'
+import { useNavigate } from 'react-router-dom'
 
 export const LoginForm: React.FC<ILoginForm> = React.memo(
   ({ dataAttr, className, changeState }) => {
@@ -21,6 +22,7 @@ export const LoginForm: React.FC<ILoginForm> = React.memo(
     const [password, setPassword] = useState('')
     const [isPasswordValid, setIsPasswordValid] = useState(false)
     const [isRestaurant, setIsRestaurant] = useState(false)
+    const navigate = useNavigate()
 
     const onSubmitHandler = useCallback(async () => {
       login({ email, password }, isRestaurant)

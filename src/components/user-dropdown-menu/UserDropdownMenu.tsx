@@ -37,6 +37,7 @@ export const UserDropdownMenu: React.FC<IUserDropdownMenu> = React.memo(
             iconSize={24}
             iColor={COLOR.black_100}
             onClick={menuClickHandler}
+            className="user-dropdown-button"
           />
           <div css={wrapperStyles(DROPDOWN_MENU_WIDTH.SMALL)}>
             {isMenuOpen && (

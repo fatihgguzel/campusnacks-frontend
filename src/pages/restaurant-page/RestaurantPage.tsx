@@ -21,11 +21,7 @@ export const RestaurantPage: React.FC = React.memo(() => {
   )
 
   useEffect(() => {
-    if (
-      restaurantInfo &&
-      cartRestaurantId &&
-      cartRestaurantId !== restaurantInfo.id
-    ) {
+    if (restaurantInfo && cartRestaurantId !== restaurantInfo.id) {
       dispatch(clearCart())
       dispatch(setRestaurantId({ restaurantId: restaurantInfo?.id || null }))
     }

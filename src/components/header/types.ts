@@ -8,4 +8,5 @@ export interface IHeader {
   type?: HEADER_TYPE
   className?: string
   dataAttr?: dataAttrType
+  logoTo?: string
 }

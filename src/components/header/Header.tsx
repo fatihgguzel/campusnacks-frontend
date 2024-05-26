@@ -10,7 +10,7 @@ import { HeaderActions } from './components/header-actions'
 import { useAuthProvider } from '../../provider'
 
 export const Header: React.FC<IHeader> = React.memo(
-  ({ type = HEADER_TYPE.DEFAULT, dataAttr, className }) => {
+  ({ type = HEADER_TYPE.DEFAULT, dataAttr, className, logoTo }) => {
     const { t } = useLanguage()
     const defaultCampus = Object.keys(Campuses)[0]
     const { token } = useAuthProvider()
@@ -19,7 +19,7 @@ export const Header: React.FC<IHeader> = React.memo(
       <>
         <div className={className} {...dataAttr} css={headerStyles}>
           <div className="left-side">
-            <HeaderLogo />
+            <HeaderLogo logoTo={logoTo} />
             <div css={dropdownStyles}>
               <Dropdown
                 items={mapCampuses()}

@@ -68,4 +68,8 @@ export const values = {
   orderCartItemHeight: {
     DEFAULT: 105,
   },
+  cellWidth: {
+    DEFAULT: 250,
+    SMALL: 150,
+  },
 }

@@ -12,6 +12,7 @@ export const boxShadow = {
   HEADER: '0px 0px 24px 0px rgba(0,0,0,0.16);',
   DROPDOWN: '10px 10px 26px 5px rgba(0, 0, 0, 0.10);',
   TOP: '0 -14px 10px -10px rgba(0, 0, 0, 0.05);',
+  BUTTON: '0 4px 8px 0 rgba(0, 0, 0, 0.2)',
 }
 
 export type IBoxShadow = valueOf<typeof boxShadow, string>

@@ -3,7 +3,7 @@ export const APP_CONFIG = {
     count: 3,
     delay: 1000,
   },
-  authTokenExpireTime: 60 * 60,
+  authTokenExpireTime: 5 * 60 * 60,
   idleTimeout: 60 * 60 * 1000, // 1hour
 }
 

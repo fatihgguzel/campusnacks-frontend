@@ -41,6 +41,7 @@ request.interceptors.response.use(
     if ([401].includes(error?.response?.status)) {
       localStorage.removeItem('token')
       localStorage.removeItem('tokenCreatedAt')
+      window.location.href = '/'
 
       return Promise.reject(false)
     }
@@ -111,6 +112,7 @@ export const callApi = async (
     } catch {
       localStorage.removeItem('token')
       localStorage.removeItem('tokenCreatedAt')
+      window.location.replace('/')
     }
   }
 

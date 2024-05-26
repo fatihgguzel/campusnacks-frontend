@@ -45,4 +45,31 @@ export const texts = {
 
   'confirm_order': 'Complete your order',
   'view_cart': 'View your cart',
+
+  'user_give_order': 'Your order is placed successfully',
+
+  'get_active_orders': 'Active Orders (Last 24 hours)',
+  'get_all_orders': 'All Orders',
+
+  'first': 'First',
+  'last': 'Last',
+
+  'PENDING': 'Pending',
+  'ONDELIVER': 'On Deliver',
+  'CANCELLED': 'Cancelled',
+  'COMPLETED': 'Completed',
+
+  'DELIVERY': 'Delivery',
+  'TAKEOUT': 'Takeout',
+
+  'order_status': 'Order Status',
+  'order_date': 'Order Date',
+  'delivery_type': 'Delivery Type',
+  'cost': 'Cost',
+
+  'set_on_deliver': 'Set on deliver',
+  'set_complete': 'Complete order',
+  'cancel_order': 'Cancel Order',
+  'show_details': 'Show order details',
+  'items': 'Items',
 }

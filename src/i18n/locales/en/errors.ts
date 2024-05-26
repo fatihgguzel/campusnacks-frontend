@@ -20,4 +20,5 @@ export const errors: IErrors = {
   [Errors.INCORRECT_PROVIDER]: 'Incorrect provider',
   [Errors.RESTAURANT_NOT_FOUND]: 'Restaurant not found',
   [Errors.NOT_AUTHORIZED]: 'Not authorized',
+  [Errors.ORDER_NOT_FOUND]: 'Order not found',
 }

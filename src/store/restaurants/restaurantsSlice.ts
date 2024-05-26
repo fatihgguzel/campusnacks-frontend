@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { getRestaurantsResponse } from '../../types/api/responseObjects'
 import { LoaderState } from '../types'
 import { getRestaurantsQuery } from '../../types/api/requestObjects'
+import { filterUniqueRestaurants } from 'src/helpers'
 
 interface IRestaurantsSliceState {
   totalCount: getRestaurantsResponse['data']['totalCount']
@@ -33,15 +34,19 @@ export const restaurantsSlice = createSlice({
         state.totalCount = action.payload.data.totalCount
         if (state.restaurants.data) {
           if (action.payload.isInitialRender) {
-            state.restaurants.data = [...action.payload.data.restaurants]
+            state.restaurants.data = filterUniqueRestaurants([
+              ...action.payload.data.restaurants,
+            ])
           } else {
-            state.restaurants.data = [
+            state.restaurants.data = filterUniqueRestaurants([
               ...state.restaurants.data,
               ...action.payload.data.restaurants,
-            ]
+            ])
           }
         } else {
-          state.restaurants.data = action.payload.data.restaurants
+          state.restaurants.data = filterUniqueRestaurants(
+            action.payload.data.restaurants,
+          )
         }
       } else {
         state.restaurants.isLoading = !!action.payload.isLoading

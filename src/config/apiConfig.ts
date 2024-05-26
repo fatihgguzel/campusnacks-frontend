@@ -9,6 +9,8 @@ export const API_CONFIG = {
   AUTH_PASSWORD_RESET_EMAIL: '/auth/password/email',
 
   USER: '/user',
+  USER_CREATE_ORDER: '/user/order',
   RESTAURANT: '/restaurant',
+  RESTAURANT_ORDERS: '/restaurant/orders',
   RESTAURANTS: '/restaurants',
 }

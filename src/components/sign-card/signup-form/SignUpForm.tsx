@@ -13,6 +13,7 @@ import { SIGN_CARD_TYPE } from '../types'
 import { formInnerStyles, actionsStyles } from './styles'
 import { CITIES, DISTRICTS } from '../../../config'
 import { icons } from '../../../lib'
+import { useNavigate } from 'react-router-dom'
 
 export const SignUpForm: React.FC<ISignUpForm> = React.memo(
   ({ className, dataAttr, changeState }) => {
@@ -32,6 +33,7 @@ export const SignUpForm: React.FC<ISignUpForm> = React.memo(
     const [isAddressValid, setIsAddressValid] = useState(false)
     const [password, setPassword] = useState('')
     const [isPasswordValid, setIsPasswordValid] = useState(false)
+    const navigate = useNavigate()
 
     const onSubmitHandler = useCallback(() => {
       signUp({

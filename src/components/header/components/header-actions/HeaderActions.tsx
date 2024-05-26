@@ -151,14 +151,18 @@ export const HeaderActions: React.FC<IHeaderActions> = React.memo(
             onChange={onLanguageChangeHandler}
           />
         </div>
-        <div css={orderCartStyles} onClick={() => handleCartOnClick()}>
-          <Icon
-            icon={icons.shopping_basket}
-            size={25}
-            color={colors.primary.DEFAULT}
-          />
-          <span className="order-count">{totalCount !== 0 && totalCount}</span>
-        </div>
+        {!restaurant && (
+          <div css={orderCartStyles} onClick={() => handleCartOnClick()}>
+            <Icon
+              icon={icons.shopping_basket}
+              size={25}
+              color={colors.primary.DEFAULT}
+            />
+            <span className="order-count">
+              {totalCount !== 0 && totalCount}
+            </span>
+          </div>
+        )}
       </>
     )
   },

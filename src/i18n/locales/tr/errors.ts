@@ -18,5 +18,6 @@ export const errors: IErrors = {
   [Errors.REQUEST_NOT_FOUND_OR_EXPIRED]: 'İstek bulunamadı veya süresi geçmiş',
   [Errors.INCORRECT_PROVIDER]: 'Yanlış sağlayıcı',
   [Errors.RESTAURANT_NOT_FOUND]: 'Restoran bulunamadı',
-  [Errors.NOT_AUTHORIZED]: 'Yetkisiz',
+  [Errors.NOT_AUTHORIZED]: 'Yetkiniz bulunmamakta',
+  [Errors.ORDER_NOT_FOUND]: 'Sipariş bulunamadı',
 }
