@@ -19,6 +19,7 @@ export const DropdownMenu = React.forwardRef<HTMLDivElement, IDropdownMenu>(
       type = DROPDOWN_TYPE.DEFAULT,
       theme = DROPDOWN_THEME.DEFAULT,
       menuPosition,
+      useMaxHeight,
     },
     ref,
   ) => {
@@ -27,7 +28,10 @@ export const DropdownMenu = React.forwardRef<HTMLDivElement, IDropdownMenu>(
     return (
       <div
         className={className}
-        css={menuStyles({ isSubMenu: !!menuLevel, type, menuPosition })}
+        css={menuStyles(
+          { isSubMenu: !!menuLevel, type, menuPosition },
+          useMaxHeight,
+        )}
         ref={ref}
       >
         <div css={menuInnerStyles(theme)}>

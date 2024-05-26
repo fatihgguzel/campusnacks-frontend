@@ -49,7 +49,7 @@ request.interceptors.response.use(
     if (
       config &&
       config.retry &&
-      [501, 502, 503].includes(error.response.status)
+      [501, 502, 503].includes(error?.response?.status)
     ) {
       config.retry -= 1
 

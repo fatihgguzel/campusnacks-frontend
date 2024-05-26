@@ -72,6 +72,7 @@ export type IDropdownMenu = Pick<
   type?: DROPDOWN_TYPE
   menuPosition?: DROPDOWN_MENU_POSITION
   className?: string
+  useMaxHeight?: boolean
 }
 
 export type IDropdownMenuItem = Pick<

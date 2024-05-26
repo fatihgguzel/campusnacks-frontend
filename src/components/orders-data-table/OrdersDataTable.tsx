@@ -29,6 +29,10 @@ export const OrdersDataTable: React.FC<IDataTable> = React.memo(
       getCoreRowModel: getCoreRowModel(),
     })
 
+    useEffect(() => {
+      setTableColumns(columns)
+    }, [columns])
+
     const { ordersQuery } = useSelector(({ restaurantOrders }: RootState) => ({
       ordersQuery: restaurantOrders.ordersQuery,
     }))
@@ -93,6 +97,7 @@ export const OrdersDataTable: React.FC<IDataTable> = React.memo(
               ))}
             </tbody>
           </table>
+          {!data.length && <div className="no-data-found">{t('no_order')}</div>}
         </div>
       </div>
     )

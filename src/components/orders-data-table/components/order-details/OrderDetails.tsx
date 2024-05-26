@@ -13,7 +13,7 @@ import { icons } from 'src/lib'
 import { COLOR } from 'src/theme'
 
 export const OrderDetails: React.FC<IOrderDetails> = React.memo(
-  ({ className, dataAttr, orderId, onCloseclick }) => {
+  ({ className, dataAttr, orderId, onCloseclick, isOpen }) => {
     const [orderDetails, setOrderDetails] =
       useState<getOrderDetailsResponse['data']['order']>(undefined)
     const { t } = useLanguage()
@@ -25,8 +25,8 @@ export const OrderDetails: React.FC<IOrderDetails> = React.memo(
         setOrderDetails(orderDetailsResponse.order)
       }
 
-      fetchOrderDetails()
-    }, [])
+      isOpen && fetchOrderDetails()
+    }, [isOpen])
     return (
       <div css={wrapperStyles} className={className} {...dataAttr}>
         <div className="close-button-area">

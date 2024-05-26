@@ -5,4 +5,5 @@ export interface IOrderDetails {
   dataAttr?: dataAttrType
   onCloseclick?: () => void
   orderId: number
+  isOpen: boolean
 }

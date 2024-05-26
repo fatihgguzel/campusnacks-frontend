@@ -12,14 +12,16 @@ import { Pagination } from 'src/components/pagination'
 import { useSearchParams } from 'react-router-dom'
 import { TKey } from 'src/i18n/locales/en'
 import { RowActions } from 'src/components/orders-data-table/components/row-actions'
+import { ColumnDef } from '@tanstack/react-table'
 
 const ORDERS_PER_PAGE = 20
 
 export const RestaurantOrdersPage: React.FC = React.memo(() => {
   const { getOrders } = useRestaurantApi()
   const [searchParams, setSearchParams] = useSearchParams()
-  const { t } = useLanguage()
+  const { t, lang } = useLanguage()
   const [restaurantOrders, setRestaurantOrders] = useState<Order[]>([])
+  const [columns, setColumns] = useState<ColumnDef<Partial<Order>>[]>([])
   const dispatch = useDispatch()
   const parsedPage = useMemo(
     () => Number(searchParams.get('page')) || 1,
@@ -33,6 +35,20 @@ export const RestaurantOrdersPage: React.FC = React.memo(() => {
       ordersCount: restaurantOrders.totalCount,
     }),
   )
+
+  useEffect(() => {
+    setColumns([
+      { accessorKey: 'status', header: t('order_status') },
+      { accessorKey: 'orderDate', header: t('order_date') },
+      { accessorKey: 'deliveryType', header: t('delivery_type') },
+      { accessorKey: 'cost', header: t('cost') },
+      {
+        id: 'actions',
+        header: t('actions'),
+        cell: ({ row }) => <RowActions orderId={row.original.id!} />,
+      },
+    ])
+  }, [lang])
 
   const numberOfPages = useMemo(() => {
     if (!ordersCount) {
@@ -86,7 +102,7 @@ export const RestaurantOrdersPage: React.FC = React.memo(() => {
           return {
             id: order.id,
             orderDate: moment(order.orderDate).format('DD/MM/YYYY HH:mm'),
-            cost: order.cost,
+            cost: Number(order.cost.toFixed(2)),
             status: t(
               getEnumKeyByValue(OrderStatusTypes, order.status) as TKey,
             ),
@@ -96,17 +112,7 @@ export const RestaurantOrdersPage: React.FC = React.memo(() => {
             userId: order.userId,
           }
         })}
-        columns={[
-          { accessorKey: 'status', header: t('order_status') },
-          { accessorKey: 'orderDate', header: t('order_date') },
-          { accessorKey: 'deliveryType', header: t('delivery_type') },
-          { accessorKey: 'cost', header: t('cost') },
-          {
-            id: 'actions',
-            header: 'Actions',
-            cell: ({ row }) => <RowActions orderId={row.original.id!} />,
-          },
-        ]}
+        columns={columns}
       />
     </div>
   )

@@ -100,14 +100,49 @@ export const HeaderActions: React.FC<IHeaderActions> = React.memo(
         {user || restaurant || (!isTokenExpired && token) ? (
           <>
             <UserDropdownMenu
-              items={[
-                {
-                  name: t('logout'),
-                  value: t('logout'),
-                  icon: icons.logout,
-                  onItemClick: () => usePageRefresh(handleLogout),
-                },
-              ]}
+              items={
+                user
+                  ? [
+                      {
+                        name: t('my_account'),
+                        value: t('my_account'),
+                        icon: icons.user,
+                        onItemClick: () => navigate('/account'),
+                      },
+                      {
+                        name: t('logout'),
+                        value: t('logout'),
+                        icon: icons.logout,
+                        onItemClick: () => usePageRefresh(handleLogout),
+                      },
+                    ]
+                  : [
+                      {
+                        name: t('my_account'),
+                        value: t('my_account'),
+                        icon: icons.store,
+                        onItemClick: () => navigate('/vendor/account'),
+                      },
+                      {
+                        name: t('items'),
+                        value: t('items'),
+                        icon: icons.shopping_basket,
+                        onItemClick: () => navigate('/vendor/items'),
+                      },
+                      {
+                        name: t('orders'),
+                        value: t('orders'),
+                        icon: icons.delivery,
+                        onItemClick: () => navigate('/vendor/orders'),
+                      },
+                      {
+                        name: t('logout'),
+                        value: t('logout'),
+                        icon: icons.logout,
+                        onItemClick: () => usePageRefresh(handleLogout),
+                      },
+                    ]
+              }
               name={user ? user.fullName : restaurant?.name}
             />
           </>

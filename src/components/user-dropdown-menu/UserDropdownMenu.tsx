@@ -41,7 +41,11 @@ export const UserDropdownMenu: React.FC<IUserDropdownMenu> = React.memo(
           />
           <div css={wrapperStyles(DROPDOWN_MENU_WIDTH.SMALL)}>
             {isMenuOpen && (
-              <DropdownMenu className="dropdown-menu" items={items} />
+              <DropdownMenu
+                className="dropdown-menu"
+                items={items}
+                useMaxHeight={false}
+              />
             )}
           </div>
         </div>

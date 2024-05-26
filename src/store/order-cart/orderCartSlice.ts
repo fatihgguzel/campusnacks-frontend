@@ -66,10 +66,19 @@ export const orderCartSlice = createSlice({
       state.cartItems = []
       state.totalCount = 0
     },
+    clearCartItems: (state) => {
+      state.cartItems = []
+      state.totalCount = 0
+    },
   },
 })
 
-export const { setRestaurantId, addCartItem, removeCartItem, clearCart } =
-  orderCartSlice.actions
+export const {
+  setRestaurantId,
+  addCartItem,
+  removeCartItem,
+  clearCart,
+  clearCartItems,
+} = orderCartSlice.actions
 
 export default orderCartSlice.reducer

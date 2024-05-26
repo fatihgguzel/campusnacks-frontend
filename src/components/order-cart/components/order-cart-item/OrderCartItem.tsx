@@ -25,7 +25,7 @@ export const OrderCartItem: React.FC<IOrderCartItems> = React.memo(
         <div css={cartItemDetailsStyles}>
           <span className="item-name">{name}</span>
           <div className="cart-item-details-bottom">
-            <div className="item-price">{price * count} TL</div>
+            <div className="item-price">{(price * count).toFixed(2)} TL</div>
             <div className="item-counter">
               <Counter
                 counter={count}

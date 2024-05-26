@@ -66,10 +66,40 @@ export const texts = {
   'order_date': 'Order Date',
   'delivery_type': 'Delivery Type',
   'cost': 'Cost',
+  'actions': 'Actions',
 
   'set_on_deliver': 'Set on deliver',
   'set_complete': 'Complete order',
   'cancel_order': 'Cancel Order',
   'show_details': 'Show order details',
   'items': 'Items',
+
+  'no_order': 'There is no order to show',
+
+  'item_name': 'Item Name',
+  'item_description': 'Item Description',
+  'save': 'Save',
+
+  'delete_item': 'Delete item',
+  'add_item': 'Add Item',
+
+  'orders': 'Orders',
+  'my_account': 'My Account',
+
+  'user_update': 'Successfully updated!',
+  'item_update': 'Successfully updated!',
+
+  'item_info_update': 'Item successfully edited!',
+  'item_delete': 'Item successfully deleted!',
+  'item_add': 'Item successfully added!',
+
+  'restaurant_name': 'Restaurant Name',
+
+  'minimum_order': 'Minimum Order Cost',
+
+  'open_restaurant': 'Restaurant Open (Searchable)',
+  'close_restaurant': 'Restaurant Closed (Inactive)',
+
+  'busy_restaurant': 'Busy',
+  'idle_restaurant': 'Idle',
 }

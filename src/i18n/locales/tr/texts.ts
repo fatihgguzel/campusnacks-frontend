@@ -66,10 +66,40 @@ export const texts = {
   'order_date': 'Sipariş Tarihi',
   'delivery_type': 'Teslim Şekli',
   'cost': 'Tutar',
+  'actions': 'İşlemler',
 
   'set_on_deliver': 'Siparişi yola çıkar',
   'set_complete': 'Siparişi teslim et',
   'cancel_order': 'Siparişi iptal et',
   'show_details': 'Detayları göster',
   'items': 'Ürünler',
+
+  'no_order': 'Gösterilecek sipariş yok',
+
+  'item_name': 'Ürün ismi',
+  'item_description': 'Ürün açıklaması',
+  'save': 'Kaydet',
+
+  'delete_item': 'Ürünü sil',
+  'add_item': 'Ürün ekle',
+
+  'orders': 'Siparişler',
+  'my_account': 'Hesabım',
+
+  'user_update': 'Bilgileriniz başarıyla güncellendi!',
+  'item_update': 'Ürününüz başarıyla güncellendi!',
+
+  'item_info_update': 'Ürün bilgileri başarıyla güncellendi!',
+  'item_delete': 'Ürün başarıyla kaldırıldı!',
+  'item_add': 'Ürün başarıyla eklendi!',
+
+  'restaurant_name': 'Dükkan Adı',
+
+  'minimum_order': 'Minimum Sipariş Tutarı',
+
+  'open_restaurant': 'Dükkan Açık (Aranabilir)',
+  'close_restaurant': 'Dükkanı Kapalı (İnaktif)',
+
+  'busy_restaurant': 'Yoğun',
+  'idle_restaurant': 'Sakin',
 }

@@ -41,6 +41,7 @@ export const wrapperStyles = (theme: ITheme) => css`
   .order-item-info-wrapper {
     display: flex;
     gap: ${theme.gap['2xsmall']}px;
+    flex-direction: column;
 
     .order-item-info {
       display: flex;

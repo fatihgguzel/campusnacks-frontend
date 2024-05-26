@@ -4,12 +4,16 @@ import { setUser } from '../../store'
 import { API_CONFIG } from '../../config'
 import { RequestResponse, RequestService } from '../../services'
 import { getUserDetailsResponse } from '../../types/api/responseObjects'
-import { postCreateOrderBody } from 'src/types/api/requestObjects'
+import {
+  postCreateOrderBody,
+  putUpdateUserbody,
+} from 'src/types/api/requestObjects'
 import { useNotification } from '../useNotification'
 
 interface IUseUserApiReturn {
   getUser: () => Promise<getUserDetailsResponse['data']>
   giveOrder: (data: postCreateOrderBody) => Promise<void>
+  updateUser: (data: putUpdateUserbody) => Promise<void>
   isLoading: boolean
 }
 
@@ -50,9 +54,25 @@ export const useUserApi = (): IUseUserApiReturn => {
     }
   }
 
+  const updateUser = async (data: putUpdateUserbody) => {
+    setIsLoading(true)
+    try {
+      await RequestService.callApi({
+        method: 'PUT',
+        url: API_CONFIG.USER,
+        data,
+      })
+
+      success('user_update')
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
   return {
     getUser,
     giveOrder,
     isLoading,
+    updateUser,
   }
 }

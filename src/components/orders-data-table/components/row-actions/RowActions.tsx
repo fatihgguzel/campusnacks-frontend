@@ -47,6 +47,7 @@ export const RowActions: React.FC<IRowActions> = React.memo(({ orderId }) => {
         <OrderDetails
           orderId={orderId}
           onCloseclick={() => setIsDetailsModalOpen(false)}
+          isOpen={isDetailsModalOpen}
         />
       </Modal>
     </div>

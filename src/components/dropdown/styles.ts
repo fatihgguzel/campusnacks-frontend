@@ -122,7 +122,10 @@ type IMenuStyles = Pick<IDropdown, 'type'> & {
   menuPosition?: DROPDOWN_MENU_POSITION
 }
 export const menuStyles =
-  ({ isSubMenu, type, menuPosition }: IMenuStyles) =>
+  (
+    { isSubMenu, type, menuPosition }: IMenuStyles,
+    useMaxHeight: boolean | undefined,
+  ) =>
   (theme: ITheme) => css`
     position: absolute;
     ${isSubMenu
@@ -138,7 +141,7 @@ export const menuStyles =
     bottom: ${menuPosition === DROPDOWN_MENU_POSITION.UP ? '100%' : ''};
 		padding-top: ${theme.spacing['3xsmall']};
 		z-index: 1000;
-		max-height: 200px;
+		${useMaxHeight ? `max-height: 200px` : ''}
 		overflow-y: auto;
 	`}
   `

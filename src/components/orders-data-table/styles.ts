@@ -51,4 +51,14 @@ export const wrapperStyles = (theme: ITheme) => css`
       }
     }
   }
+
+  .no-data-found {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    color: ${theme.colors.error.DEFAULT};
+    font-weigt: ${theme.fontWeight};
+    margin-top: ${theme.gap.medium}px;
+  }
 `

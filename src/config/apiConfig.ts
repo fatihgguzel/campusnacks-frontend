@@ -13,4 +13,5 @@ export const API_CONFIG = {
   RESTAURANT: '/restaurant',
   RESTAURANT_ORDERS: '/restaurant/orders',
   RESTAURANTS: '/restaurants',
+  RESTAURANT_ITEM: '/restaurant/item',
 }

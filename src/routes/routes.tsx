@@ -5,12 +5,16 @@ import {
   MainLayout,
   RestaurantPageLayout,
   RestaurantLayout,
+  AccountPageLayout,
 } from '../layouts'
 import { MainPage, RestaurantPage } from '../pages'
 import { RestaurantOrdersPage } from 'src/pages/restaurant-orders-page'
+import { VendorPage } from 'src/pages/vendor-page'
+import { UserAccountPage } from 'src/pages/user-account-page'
+import { VendorAccountPage } from 'src/pages/vendor-account-page'
 
 const Routes = () => {
-  const routesForPublic = [
+  const routesForPublicAndUsers = [
     {
       path: '/',
       element: <UnprotectedPageLayout />,
@@ -36,6 +40,16 @@ const Routes = () => {
           ],
         },
         {
+          path: '/',
+          element: <AccountPageLayout />,
+          children: [
+            {
+              path: '/account',
+              element: <UserAccountPage />,
+            },
+          ],
+        },
+        {
           path: '/*',
           element: <Navigate to="/" />,
         },
@@ -43,7 +57,7 @@ const Routes = () => {
     },
   ]
 
-  const routesForAuthenticatedOnly = [
+  const routesForRestaurants = [
     {
       path: '/',
       element: <ProtectedPageLayout />,
@@ -60,6 +74,14 @@ const Routes = () => {
               path: '',
               element: <Navigate to="/vendor/orders" replace />,
             },
+            {
+              path: '/vendor/items',
+              element: <VendorPage />,
+            },
+            {
+              path: '/vendor/account',
+              element: <VendorAccountPage />,
+            },
           ],
         },
       ],
@@ -67,8 +89,8 @@ const Routes = () => {
   ]
 
   const router = createBrowserRouter([
-    ...routesForPublic,
-    ...routesForAuthenticatedOnly,
+    ...routesForPublicAndUsers,
+    ...routesForRestaurants,
   ])
 
   return <RouterProvider router={router} />
