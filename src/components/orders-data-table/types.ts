@@ -6,6 +6,7 @@ export interface Order {
   id: number
   userId: number
   restaurantId: number
+  restaurantName?: string
   status: ENUMS.OrderStatusTypes
   orderDate: Date | string
   deliveredDate: Date | null
@@ -23,4 +24,5 @@ export interface IDataTable {
   dataAttr?: dataAttrType
   data: Partial<Order>[]
   columns: ColumnDef<Partial<Order>>[]
+  isUserOrders?: boolean
 }

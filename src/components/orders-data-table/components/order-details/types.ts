@@ -6,4 +6,5 @@ export interface IOrderDetails {
   onCloseclick?: () => void
   orderId: number
   isOpen: boolean
+  isUserOrders?: boolean
 }

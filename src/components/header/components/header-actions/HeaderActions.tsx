@@ -110,6 +110,12 @@ export const HeaderActions: React.FC<IHeaderActions> = React.memo(
                         onItemClick: () => navigate('/account'),
                       },
                       {
+                        name: t('orders'),
+                        value: t('orders'),
+                        icon: icons.delivery,
+                        onItemClick: () => navigate('/orders'),
+                      },
+                      {
                         name: t('logout'),
                         value: t('logout'),
                         icon: icons.logout,

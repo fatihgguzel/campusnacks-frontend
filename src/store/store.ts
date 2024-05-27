@@ -5,6 +5,7 @@ import restaurantsReducer from './restaurants/restaurantsSlice'
 import publicRestaurantReducer from './public-restaurant/publicRestaurantSlice'
 import orderCartReducer from './order-cart/orderCartSlice'
 import restaurantOrdersReducer from './restaurant-orders/restaurantOrdersSlice'
+import userOrdersReducer from './user-orders/userOrdersSlice'
 import {
   persistStore,
   persistReducer,
@@ -34,6 +35,7 @@ export const store = configureStore({
     publicRestaurant: publicRestaurantReducer,
     orderCart: persistedOrderCart,
     restaurantOrders: restaurantOrdersReducer,
+    userOrders: userOrdersReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

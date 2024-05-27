@@ -1,2 +1,7 @@
 export * from './main-page'
 export * from './restaurant-page'
+export * from './restaurant-orders-page'
+export * from './user-account-page'
+export * from './vendor-account-page'
+export * from './vendor-page'
+export * from './user-orders-page'

@@ -7,7 +7,7 @@ import {
   RestaurantLayout,
   AccountPageLayout,
 } from '../layouts'
-import { MainPage, RestaurantPage } from '../pages'
+import { MainPage, RestaurantPage, UserOrdersPage } from '../pages'
 import { RestaurantOrdersPage } from 'src/pages/restaurant-orders-page'
 import { VendorPage } from 'src/pages/vendor-page'
 import { UserAccountPage } from 'src/pages/user-account-page'
@@ -46,6 +46,10 @@ const Routes = () => {
             {
               path: '/account',
               element: <UserAccountPage />,
+            },
+            {
+              path: '/orders',
+              element: <UserOrdersPage />,
             },
           ],
         },

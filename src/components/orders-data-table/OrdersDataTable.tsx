@@ -10,11 +10,12 @@ import { wrapperStyles } from './styles'
 import { Button } from '../button'
 import { useLanguage } from 'src/hooks'
 import { useDispatch, useSelector } from 'react-redux'
-import { setOrdersQuery } from 'src/store/restaurant-orders'
+import { setOrdersQuery as setRestaurantOrdersQuery } from 'src/store/restaurant-orders'
+import { setOrdersQuery as setUserOrdersQuery } from 'src/store/user-orders'
 import { RootState } from 'src/store'
 
 export const OrdersDataTable: React.FC<IDataTable> = React.memo(
-  ({ className, dataAttr, data, columns }) => {
+  ({ className, dataAttr, data, columns, isUserOrders }) => {
     const [tableData, setTableData] = useState<Partial<Order>[]>([])
     const [tableColumns, setTableColumns] =
       useState<ColumnDef<Partial<Order>>[]>(columns)
@@ -38,13 +39,21 @@ export const OrdersDataTable: React.FC<IDataTable> = React.memo(
     }))
 
     const handleButtonClick = () => {
-      dispatch(
-        setOrdersQuery({
-          active: isAllOrders,
-          limit: ORDERS_PER_PAGE,
-          offset: ordersQuery.offset,
-        }),
-      )
+      isUserOrders
+        ? dispatch(
+            setUserOrdersQuery({
+              active: isAllOrders,
+              limit: ORDERS_PER_PAGE,
+              offset: ordersQuery.offset,
+            }),
+          )
+        : dispatch(
+            setRestaurantOrdersQuery({
+              active: isAllOrders,
+              limit: ORDERS_PER_PAGE,
+              offset: ordersQuery.offset,
+            }),
+          )
 
       setIsAllOrders((prev) => !prev)
     }

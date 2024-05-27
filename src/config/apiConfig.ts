@@ -10,6 +10,7 @@ export const API_CONFIG = {
 
   USER: '/user',
   USER_CREATE_ORDER: '/user/order',
+  USER_ORDERS: '/user/orders',
   RESTAURANT: '/restaurant',
   RESTAURANT_ORDERS: '/restaurant/orders',
   RESTAURANTS: '/restaurants',

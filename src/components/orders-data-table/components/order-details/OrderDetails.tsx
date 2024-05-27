@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { IOrderDetails } from './types'
 import { wrapperStyles } from './styles'
 import { getOrderDetailsResponse } from 'src/types/api/responseObjects'
-import { useLanguage, useRestaurantApi } from 'src/hooks'
+import { useLanguage, useRestaurantApi, useUserApi } from 'src/hooks'
 import {
   Button,
   BUTTON_SIZE,
@@ -13,15 +13,19 @@ import { icons } from 'src/lib'
 import { COLOR } from 'src/theme'
 
 export const OrderDetails: React.FC<IOrderDetails> = React.memo(
-  ({ className, dataAttr, orderId, onCloseclick, isOpen }) => {
+  ({ className, dataAttr, orderId, onCloseclick, isOpen, isUserOrders }) => {
     const [orderDetails, setOrderDetails] =
       useState<getOrderDetailsResponse['data']['order']>(undefined)
     const { t } = useLanguage()
-    const { getOrderDetails } = useRestaurantApi()
+    const { getOrderDetails: getRestaurantOrderDetails } = useRestaurantApi()
+    const { getOrderDetails: getUserOrderDetails } = useUserApi()
 
     useEffect(() => {
       const fetchOrderDetails = async () => {
-        const orderDetailsResponse = await getOrderDetails({ orderId })
+        const orderDetailsResponse = isUserOrders
+          ? await getUserOrderDetails({ orderId })
+          : await getRestaurantOrderDetails({ orderId })
+
         setOrderDetails(orderDetailsResponse.order)
       }
 
