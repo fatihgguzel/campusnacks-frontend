@@ -5,4 +5,5 @@ export interface IWelcomeForm {
   className?: string
   dataAttr?: dataAttrType
   changeState: (state: SIGN_CARD_TYPE) => void
+  onCloseclick?: () => void
 }

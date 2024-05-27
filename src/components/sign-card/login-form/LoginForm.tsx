@@ -14,7 +14,7 @@ import { actionsStyles, formInnerStyles } from './styles'
 import { useNavigate } from 'react-router-dom'
 
 export const LoginForm: React.FC<ILoginForm> = React.memo(
-  ({ dataAttr, className, changeState }) => {
+  ({ dataAttr, className, changeState, onCloseclick }) => {
     const { login, isLoading } = useAuthApi()
     const { t } = useLanguage()
     const [email, setEmail] = useState('')
@@ -26,6 +26,8 @@ export const LoginForm: React.FC<ILoginForm> = React.memo(
 
     const onSubmitHandler = useCallback(async () => {
       login({ email, password }, isRestaurant)
+
+      onCloseclick?.()
     }, [email, password, isRestaurant])
 
     const onRestaurantClickHandler = useCallback(() => {

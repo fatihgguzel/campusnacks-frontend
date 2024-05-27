@@ -6,4 +6,5 @@ export interface ILoginForm {
   dataAttr?: dataAttrType
   onGoogleAuth?: () => void
   changeState: (state: SIGN_CARD_TYPE) => void
+  onCloseclick?: () => void
 }

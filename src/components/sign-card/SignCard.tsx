@@ -24,13 +24,33 @@ export const SignCard: React.FC<ISignCard> = React.memo(
     const render = () => {
       switch (currentState) {
         case SIGN_CARD_TYPE.LOGIN:
-          return <LoginForm changeState={setCurrentState} />
+          return (
+            <LoginForm
+              changeState={setCurrentState}
+              onCloseclick={onCloseclick}
+            />
+          )
         case SIGN_CARD_TYPE.SIGNUP:
-          return <SignUpForm changeState={setCurrentState} />
+          return (
+            <SignUpForm
+              changeState={setCurrentState}
+              onCloseclick={onCloseclick}
+            />
+          )
         case SIGN_CARD_TYPE.WELCOME:
-          return <WelcomeForm changeState={setCurrentState} />
+          return (
+            <WelcomeForm
+              changeState={setCurrentState}
+              onCloseclick={onCloseclick}
+            />
+          )
         default:
-          return <WelcomeForm changeState={setCurrentState} />
+          return (
+            <WelcomeForm
+              changeState={setCurrentState}
+              onCloseclick={onCloseclick}
+            />
+          )
       }
     }
 

@@ -16,7 +16,7 @@ import { icons } from '../../../lib'
 import { useNavigate } from 'react-router-dom'
 
 export const SignUpForm: React.FC<ISignUpForm> = React.memo(
-  ({ className, dataAttr, changeState }) => {
+  ({ className, dataAttr, changeState, onCloseclick }) => {
     const { t } = useLanguage()
     const { signUp, isLoading } = useAuthApi()
     const [fullName, setFullName] = useState('')
@@ -45,6 +45,8 @@ export const SignUpForm: React.FC<ISignUpForm> = React.memo(
         district,
         phoneNumber,
       })
+
+      onCloseclick?.()
     }, [fullName, email, password, phoneNumber, address])
 
     const onLoginClickHandler = useCallback(() => {

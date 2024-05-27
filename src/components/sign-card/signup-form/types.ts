@@ -5,5 +5,6 @@ export interface ISignUpForm {
   className?: string
   dataAttr?: dataAttrType
   onGoogleAuth?: () => void
+  onCloseclick?: () => void
   changeState: (state: SIGN_CARD_TYPE) => void
 }
