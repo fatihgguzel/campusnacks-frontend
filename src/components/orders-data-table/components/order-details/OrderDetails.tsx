@@ -70,7 +70,7 @@ export const OrderDetails: React.FC<IOrderDetails> = React.memo(
           </div>
         </div>
         <div className="customer-address title-wrapper">
-          <div className="customer-address-key key">{t('city')}:</div>
+          <div className="customer-address-key key">{t('address')}:</div>
           <div className="customer-address-value value">
             {orderDetails?.user.address.address}
           </div>
