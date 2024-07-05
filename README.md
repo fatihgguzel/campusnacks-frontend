@@ -1,3 +1,7 @@
+## Introduction
+CampuSnacks is an online food-delivery service for campus areas, focused on local vendors. This repository contains frontend codebase.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
